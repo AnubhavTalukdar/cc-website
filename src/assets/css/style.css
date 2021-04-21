@@ -1,0 +1,367 @@
+/*Header*/
+
+.header {
+    background: black;
+    height: 44px;
+}
+
+/*Newsletter*/
+
+.newsletter {
+    background-color: #51c0cf;
+}
+
+.newsletter-text1 {
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.newsletter-text2 {
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.08;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.newsletter-input {
+    height: 48px;
+    border-radius: 12px;
+}
+
+.newsletter-button {
+    width: 184px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: #000000;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.83;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+
+
+/*Navbar*/
+
+
+.nav-link {
+    font-size: 16px;
+}
+
+.nav-button {
+    width: 128px;
+    height: 33px;
+    border: none;
+    border-radius: 5px;
+    background-color: #51c0cf;
+    color: white;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+}
+
+
+/*Footer*/
+
+.footer {
+    background-color: #231f20;
+}
+
+.footer-logo {
+    width: 230px;
+    height: 80px;
+}
+
+.footer-column2-text {
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    color: white;
+}
+
+.footer-column3-text {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.footer-anchor {
+    color : #faa51a;
+}
+
+.footer-column4-heading {
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.footer-column4-text {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.footer-copyright {
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #acacac;
+}
+
+.social-icons-facebook {
+    width: 17px;
+    margin: 3px;
+    margin-bottom: 7px;
+   
+}
+
+.social-icons-twitter, .social-icons-instagram {
+    width: 17px;
+    margin: 4px;
+    margin-bottom: 7px;
+}
+
+.social-icons-facebook:hover {
+    width: 22px;
+    margin-bottom: 7px;
+}
+
+.social-icons-twitter:hover, .social-icons-instagram:hover {
+    width: 22px;
+    margin-bottom: 7px;
+}
+
+.r-border {
+    border-right: solid 0.5px #ffffff;
+    height: 130px;
+}
+.l-border {
+    border-left: solid 0.5px #ffffff;
+    height: 130px;
+}
+
+@media only screen and (max-width: 600px) {
+    .r-border {
+        border-right: none;
+    }
+    .l-border {
+        border-left: none;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .r-border {
+        border-right: none;
+    }
+    .l-border {
+        border-left: none;
+    }
+  }
+/*Contact Us*/
+
+.contact-us-text1 {
+    font-family: OpenSans;
+    font-size: 28px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.37;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+}
+
+.contact-us-text2 {
+    font-family: SegoeUI;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+}
+
+.contact-us-text3 {
+    font-family: ProximaNova;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.contact-us-text4 {
+    font-family: ProximaNova;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #faa51a;
+}
+
+.contact-us-background {
+    width: 1130px;
+    height: 522px;
+    border-radius: 30px;
+}
+
+.contact-us-input {
+    width: 50%;
+    border-radius: 7px;
+    border: solid 1px #707070;
+}
+
+
+.contact-us-message {
+    resize: none;
+    border-radius: 7px;
+    border: solid 1px #707070;
+}
+
+.contact-us-button {
+    width: 155px;
+    height: 30px;
+    border-radius: 7px;
+    border: none;
+    /* border: solid 1px #707070; */
+    background-color: #51C0CF;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .contact-us-text1 {
+        font-size: 20px;
+    }
+    .contact-us-input {
+        width: 100%;
+    }
+  }
+
+/*FAQ*/
+
+.faq-section1 {
+    background-color: #f1f1f1;
+}
+
+.faq-section1-text {
+    font-size: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+}
+
+.faq-section2 {
+    background-color: none;
+}
+
+.faq-section2-text {
+    font-family: OpenSans;
+    font-size: 30px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.37;
+    letter-spacing: normal;
+    color: #707070;
+}
+
+.faq-section2-lasttext {
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    text-align: center;
+    color: #707070;
+}
+
+.accordion-button {
+    font-family: OpenSans;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+}
+
+.tab-link {
+    margin-bottom: 20px;
+    text-align: center !important;
+    color: #707070 !important;
+}
+
+.tab-link.active {
+    background-color: rgba(81, 192, 207, 0.35) !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .faq-section1-text {
+        font-size: 24px;
+    }
+    .faq-section2-text {
+        font-size: 24px;
+    }
+    .accordion-button {
+        font-family: OpenSans;
+        font-size: 15px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: normal;
+        text-align: left;
+        color: #707070;
+    }
+  }
