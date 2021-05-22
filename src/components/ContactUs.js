@@ -14,12 +14,12 @@ function ContactUs(){
             <p className="contact-us-text1"> Send us your querries, give us feedback <br/>or start a conversation or join in/<br/>contribute/ collaborate!</p>
         </div>
         <div className="col-lg-5 pl-5 text-center text-lg-right">
-            <img className="clipart1" src={clipart1} alt="clipart1" width="85%"/>
-        </div>
+            <img className="clipart1" src={clipart1} alt="clipart1" width="85%" />
+        </div >
     </div>
-    <br />
-    <div className="row container-fluid pb-5 justify-content-center">
-        
+    <br id="contactUsForm"/>
+    <div className="row container-fluid pb-5 justify-content-center" >
+            
             <div className="row container-fluid ml-lg-5 mr-lg-4 ml-4 mr-0" style={{borderRadius : "30px", backgroundColor : "#f1f1f1"}}>
             <div className="col-lg-7 col-sm-12 col-xs-12 mt-5 mb-5 pl-2 pr-2 pl-lg-5 pr-lg-5" style={{borderRadius : "30px", backgroundColor : "white"}}>
                 <br />

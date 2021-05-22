@@ -16,22 +16,25 @@ function Nav() {
             <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto pr-3">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">Home</a>
+                <a className="nav-link" aria-current="page" href="/">Home</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Blog</a>
+                <a className="nav-link" href="/about">About</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Free Resources</a>
+                <a className="nav-link" href="/products">Products/Services</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Products/Services</a>
+                <a className="nav-link" href="/blogs">Blog</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">About Us</a>
+                <a className="nav-link" href="/freeresources">Free Resources</a>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link" href="/faq">FAQ</a>
               </li>
               <li className="nav-item pr-2">
-                <a className="nav-link" href="/faq">FAQ</a>
+                <a className="nav-link" href="/contactus">Contact Us</a>
               </li>
               <li className="nav-item pt-1 lg-pl-1 sm-pl-0 xs-pl-0">
                 <button className="nav-button">Free consult</button>

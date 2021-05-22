@@ -197,11 +197,9 @@ function FAQ(){
             <div className="col-12 text-center text-lg-left">
               <span className="faq-section2-text">Did not find your answer? </span>
             </div>
-            <div className="col-12 text-center">
-              <span className="faq-section2-text">Ask for feedback.</span>
-            </div>
+            
             <div className="col-12 text-center text-lg-left">
-              <span className="faq-section2-text">Send us your question!</span>
+              <span className="faq-section2-text"><a href="/contactus/#contactUsForm" style={{color: '#860000'}}>Send</a> us your question!</span>
             </div>
             <div className="col-12 text-center text-lg-left">
               <span className="faq-section2-lasttext">We are always happy to help!</span>

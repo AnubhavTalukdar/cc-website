@@ -10,7 +10,7 @@ function Header() {
             <div className="container-fluid px-0 header">
                 <div className="row container-fluid">
                 <div className="col-12 text-right pr-1 pt-2">
-                    <a className="footer-anchor" href="">contact@consciousculture.in</a>
+                    <a className="footer-anchor" href="mailto:contact@consciousculture.in" target="_blank" rel="noopener noreferrer">contact@consciousculture.in</a>
                     <a href="#">
                         <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" />
                     </a>

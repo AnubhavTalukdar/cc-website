@@ -19,8 +19,8 @@ function Footer(){
                     
                 </div>
                 <div className="col-lg-3 col-md-6 col-xs-12 col-sm-12 text-lg-left text-center pl-lg-5 pr-none l-border r-border">
-                <p className="footer-column3-text">You could drop us a message <a className="footer-anchor" href="">here.</a></p>
-                <p className="footer-column3-text">Or write to us at <br/><a className="footer-anchor" href="">contact@consciousculture.in</a></p>
+                <p className="footer-column3-text">You could drop us a message <a className="footer-anchor" href="/contactus/#contactUsForm">here.</a></p>
+                <p className="footer-column3-text">Or write to us at <br/><a className="footer-anchor" href="mailto:contact@consciousculture.in" target="_blank" rel="noopener noreferrer">contact@consciousculture.in</a></p>
                 <div className="footer-column3-text">
                     Follow us : 
                     <a href="#">
