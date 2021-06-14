@@ -58,6 +58,10 @@
 
 /*Navbar*/
 
+.nav-logo {
+    width: 230px;
+    height: 67px
+}
 
 .nav-link {
     font-size: 16px;
@@ -78,6 +82,13 @@
     letter-spacing: normal;
 }
 
+@media only screen and (max-width: 600px) {
+    .nav-logo {
+        width: 138px;
+        height: 40.2px
+
+    }
+}
 
 /*Footer*/
 
