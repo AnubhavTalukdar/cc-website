@@ -7,6 +7,7 @@ import BlogsPage from './routes/BlogsPage';
 import FreeResourcesPage from './routes/FreeResourcesPage'
 import AboutUsPage from './routes/AboutUsPage'
 import ProductsPage from './routes/ProductsPage'
+import IndividualBlogPage from './routes/IndividualBlogPage'
 import "./assets/css/style.css"
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <FreeResourcesPage path="/freeresources" />
       <AboutUsPage path="/about" />
       <ProductsPage path="/products" />
+      <IndividualBlogPage path="/blog/:blogId" />
       </Router>
     </div>
   );

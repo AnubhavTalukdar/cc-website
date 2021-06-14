@@ -1799,3 +1799,63 @@
    
 }
 
+/*Individual Blog*/
+
+.individual-blog-heading {
+    font-size: 30px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: normal;
+    color: #707070;
+    text-align: left;
+}
+
+.individual-blog-description {
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #707070;
+}
+
+.individual-blog-author {
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+}
+
+.individual-blog-designation {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+}
+
+.individual-blog-img {
+    width: 80%;
+}
+
+@media only screen and (max-width: 600px) { 
+    .custom-blog-padding{
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
+
+    .individual-blog-img {
+        width: 100%;
+    }
+}

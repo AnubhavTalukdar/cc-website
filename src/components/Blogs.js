@@ -30,7 +30,7 @@ function Blogs(){
 
     return(
         <>
-        <div className="row container-fluid justify-content-center pt-4 pb-lg-5 pb-3">
+        <div className="row container-fluid justify-content-center pt-4 pb-lg-4 pb-3">
             <div className="col-lg-10 col-sm-12 pl-4">
                 
                 { last.map((b)=>(
@@ -64,7 +64,7 @@ function Blogs(){
                             <span className="blog-category">PRIDE MONTH • </span>
                             <span className="blog-date">{b.Date_of_Publishing}</span><br />
                             <span className="blog-read"><em>{b.Reading_Time} mins read</em></span><br />
-                            <p className="blog-heading">{b.Title} </p>
+                            <p className="blog-heading"> <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>{b.Title} </a></p>
                             <p className="blog-summary">{b.Summary} </p>
                             <p className="blog-author">{b.Author}<br /><span className="highlight-designation">{b.Author_Designation}</span></p>
                         </div>
