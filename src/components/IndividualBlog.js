@@ -30,7 +30,6 @@ function IndividualBlog(){
 
     }, [])
 
-    console.log(img)
 
     return(
         <>
@@ -39,7 +38,7 @@ function IndividualBlog(){
                 <h4 className="individual-blog-heading">{title}</h4>
                 <br />
                 <div className="text-center">
-                <img src={img} className="individual-blog-img"/>
+                <img src={img} alt={"individual-blog-picture"+blogId} className="individual-blog-img"/>
                 </div>
                 <br />
                 <br />
