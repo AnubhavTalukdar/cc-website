@@ -1,5 +1,5 @@
 /* jsx-a11y/iframe-has-title */
-import React from 'react';
+import React, {useState, useEffect} from "react";
 import Ashoka from "../assets/img/ashoka.png"
 import Welham from "../assets/img/welham.png"
 import Trucup from "../assets/img/trucup.png"
@@ -7,12 +7,14 @@ import Nipman from "../assets/img/nipman.png"
 import Card1 from "../assets/img/card1.jpg"
 import Card2 from "../assets/img/card2.jpg"
 import SideArrow from "../assets/img/sidearrow.PNG"
-import BlogsPicture from "../assets/img/homepage-blog.png"
 import BlogSecond from "../assets/img/blog.png"
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import { BASE_URL } from "../config/url";
+import axios from "axios"
+var arraySort = require('array-sort');
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -36,6 +38,22 @@ function Homepage(){
     const handleClose = () => {
       setOpen(false);
     };
+
+    const [blogs, setBlogs] = useState([])
+
+    useEffect(() => { 
+        axios.get(`${BASE_URL}/blogs`)
+        .then(response => {
+            setBlogs(arraySort(response.data, "id"))
+        })
+
+    }, [])
+
+    let last = blogs.slice(-1)
+
+    let lastf = blogs.slice(-5).reverse()
+    console.log(last)
+    console.log(lastf)
     return(
         <>
             <div>
@@ -89,74 +107,41 @@ function Homepage(){
         <div className="homepage-section2 container-fluid px-0 mt-5">
             <div className="row container-fluid">
                 <div className="col-lg-7 pt-3">
-                    <div className="row pl-5 container-fluid">
-                        <div className="col-12 px-0">
-                            <img src={BlogsPicture} alt="" width="100%"/>
+                    { last.map((b) =>(
+                        <div className="row pl-5 container-fluid">
+                        <div className="col-lg-5 col-sm-12 px-0">
+                           <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img src={BASE_URL + b.Placeholder_Image.url} alt="" width="100%"/></a>
                         </div>
-                        <div className="col-7 px-0">
-                           <p className="homepage-section2-highlight-heading">How does unconscious bias impact the hiring 
-                            and layoff process during a pandemic induced 
-                            economic crisis?</p>
+                        <div className="col-lg-7 col-sm-12 pl-lg-5 pl-md-0 pl-0 pt-3 pt-lg-0 pb-0 pb-lg-4">
+                           <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-highlight-heading">{b.Title}</p></a>
+
+                           <p className="homepage-section2-highlight-read">{b.Summary}</p>
+
+                           <p className="homepage-section2-highlight-author">{b.Author} <br/><p className="homepage-section2-highlight-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</p></p>
                         </div> 
-                        <div className="col-5 pt-3 text-right">
-                            <p className="homepage-section2-highlight-author">Pranjal Das <br/><p className="homepage-section2-highlight-read">June15 | 15 min read</p></p>
-                            
-                        </div> 
-                    </div>
+        
+                        </div>
+
+                    ))}
+                    
                     <div className="row pl-5 container-fluid">
-                    <div className="col-lg-6 pt-2 col-sm-12 px-0">
-                        <div className="row container-fluid px-0">
+                    {lastf.slice(1,5).map((b) =>(
+                        <div className="col-lg-6 pt-2 col-sm-12 px-0">
+                        <div className="row px-0">
                         <div className="col-4">
-                            <img className="homepage-section2-blog-img" src={BlogSecond} alt="blog-img" />
+                            <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img className="homepage-section2-blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt="blog-img"/></a>
                         </div>
                         <div className="col-8">
-                            <p className="homepage-section2-blog-heading">Gender inclusive trainings succeed with sustained commitment</p>
-                            <p className="homepage-section2-blog-subheading">Tagline for blog one Tagling for blog one</p>
-                            <p className="homepage-section2-blog-author">Author name <br /><span className="homepage-section2-blog-read">Aug 8 | 5 min read</span></p>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 col-sm-12 pt-2 px-0">
-                        <div className="row container-fluid px-0">
-                        <div className="col-4">
-                            <img className="homepage-section2-blog-img" src={BlogSecond} alt="blog-img" />
-                        </div>
-                        <div className="col-8">
-                            <p className="homepage-section2-blog-heading">Gender inclusive trainings succeed with sustained commitment</p>
-                            <p className="homepage-section2-blog-subheading">Tagline for blog one Tagling for blog one</p>
-                            <p className="homepage-section2-blog-author">Author name <br /><span className="homepage-section2-blog-read">Aug 8 | 5 min read</span></p>
+                            <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-blog-heading">{b.Title}</p></a>
+                            <p className="homepage-section2-blog-subheading">{b.Summary}</p>
+                            <p className="homepage-section2-blog-author">{b.Author}<br /><span className="homepage-section2-blog-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</span></p>
                         </div>
                         </div>
                     </div>
 
+                    ))}
                     </div>
-                    <div className="row pl-5 container-fluid">
-                    <div className="col-lg-6 col-sm-12 pt-2 px-0">
-                        <div className="row container-fluid px-0">
-                        <div className="col-4">
-                            <img className="homepage-section2-blog-img" src={BlogSecond} alt="blog-img" />
-                        </div>
-                        <div className="col-8">
-                            <p className="homepage-section2-blog-heading">Gender inclusive trainings succeed with sustained commitment</p>
-                            <p className="homepage-section2-blog-subheading">Tagline for blog one Tagling for blog one</p>
-                            <p className="homepage-section2-blog-author">Author name <br /><span className="homepage-section2-blog-read">Aug 8 | 5 min read</span></p>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 col-sm-12 pt-2 px-0">
-                        <div className="row container-fluid px-0">
-                        <div className="col-4">
-                            <img className="homepage-section2-blog-img" src={BlogSecond} alt="blog-img" />
-                        </div>
-                        <div className="col-8">
-                            <p className="homepage-section2-blog-heading">Gender inclusive trainings succeed with sustained commitment</p>
-                            <p className="homepage-section2-blog-subheading">Tagline for blog one Tagling for blog one</p>
-                            <p className="homepage-section2-blog-author">Author name <br /><span className="homepage-section2-blog-read">Aug 8 | 5 min read</span></p>
-                        </div>
-                        </div>
-                    </div>
-
-                    </div>
+                    
                     
                 </div>
                 <div className="col-lg-5 pt-3 pl-5">

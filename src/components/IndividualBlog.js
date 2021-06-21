@@ -14,6 +14,9 @@ function IndividualBlog(){
     const [author, setAuthor] = useState("")
     const [authorDesg, setAuthorDesg] = useState("")
     const [date, setDate] = useState("")
+    const [aroundTheWebs, setAroundTheWebs] = useState([])
+    const [visible, setVisible] = useState(5)
+    const [length, setLength] = useState(0)
 
     useEffect(() => { 
         axios.get(`${BASE_URL}/blogs/${blogId}`)
@@ -27,8 +30,19 @@ function IndividualBlog(){
             setImg(`${BASE_URL}${response.data.Placeholder_Image.url}`)
             
         })
+    // eslint-disable-next-line
 
+    axios.get(`${BASE_URL}/around-the-webs`)
+        .then(response => {
+            setAroundTheWebs(response.data)
+            setLength(response.data.length)
+        })
+    // eslint-disable-next-line
     }, [])
+
+    const loadMore = (e) => {
+        setVisible((prevValue) => prevValue + 3)
+    }
 
 
     return(
@@ -57,56 +71,23 @@ function IndividualBlog(){
                 <h2 className="our-blogs-heading2-small pl-lg-5 pl-none">THIS WEEK</h2>
                 <h2 className="our-blogs-heading2 pl-lg-5 pl-none">Around the web</h2>
                 <h2 className="our-blogs-heading2-last pl-lg-5 pl-none pb-lg-4 pb-3">A curated list of articles from around the web, that drew our attention this week.*</h2>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
+                { aroundTheWebs.slice(0,visible).map((a)=>(
+                     <div className="row pl-lg-5 pl-none pb-3">
+                     <div className="col-7">
+                         <p className="atw-heading"><a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>{a.Title} </a></p>
+                         <p className="atw-summary">{a.Description}</p>
+                         <p className="atw-medium">{a.Website_Name}<br /><span className="atw-dnr">{a.Date} | {a.Reading_Time} mins</span></p>
+                     </div>
+                     <div className="col-5 text-center">
+                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={atw} alt="" width="90%"/></a>
+                     </div>
+                 </div>
+                ))
+                }
+                <br />
+                <center>
+                    <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
+                </center>
                 </div>
             </div>
         </div>

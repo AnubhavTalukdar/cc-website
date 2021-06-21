@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import BlogsPicture from "../assets/img/download.png"
 import atw from "../assets/img/atw.png"
 import { BASE_URL } from "../config/url";
 import axios from "axios"
@@ -8,16 +7,24 @@ var arraySort = require('array-sort');
 function Blogs(){
 
     const [blogs, setBlogs] = useState([])
+    const [aroundTheWebs, setAroundTheWebs] = useState([])
     const [visible, setVisible] = useState(5)
     const [length, setLength] = useState(0)
+    const [visible1, setVisible1] = useState(5)
+    const [length1, setLength1] = useState(0)
     
 
     useEffect(() => { 
         axios.get(`${BASE_URL}/blogs`)
         .then(response => {
-            console.log(response.data)
             setBlogs(arraySort(response.data, "id"))
             setLength(response.data.length)
+        })
+
+        axios.get(`${BASE_URL}/around-the-webs`)
+        .then(response => {
+            setAroundTheWebs(response.data)
+            setLength1(response.data.length)
         })
 
     }, [])
@@ -28,6 +35,10 @@ function Blogs(){
         setVisible((prevValue) => prevValue + 3)
     }
 
+    const loadMore1 = (e) => {
+        setVisible1((prevValue) => prevValue + 3)
+    }
+
     return(
         <>
         <div className="row container-fluid justify-content-center pt-4 pb-lg-4 pb-3">
@@ -36,13 +47,13 @@ function Blogs(){
                 { last.map((b)=>(
                     <div className="row container-fluid px-0 pl-5">
                     <div className="col-lg-8 col-sm-12">
-                    <img className="highlight-img" src={BlogsPicture} alt="highlight-img" />
+                    <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img className="highlight-img" src={BASE_URL + b.Placeholder_Image.url} alt="highlight-img" /></a>
                 </div>
                 <div className="col-lg-4 col-sm-12">
                     <span className="highlight-category">PRIDE MONTH • </span>
                     <span className="highlight-date">{b.Date_of_Publishing}</span><br />
                     <span className="highlight-read"><em>{b.Reading_Time} mins read</em></span><br />
-                    <p className="highlight-heading">{b.Title} </p>
+                    <p className="highlight-heading"> <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>{b.Title} </a></p>
                     <p className="highlight-summary">{b.Summary}</p>
                     <p className="highlight-author">{b.Author} <br /><span className="highlight-designation">{b.Author_Designation}</span></p>
                 </div>
@@ -58,7 +69,7 @@ function Blogs(){
                     blogs.slice(0,visible).map((b) =>(
                         <div className="row pl-5 pb-3">
                         <div className="col-lg-6 col-md-6 col-sm-12">
-                            <img className="blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt=""/>
+                            <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>  <img className="blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt=""/> </a>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12">
                             <span className="blog-category">PRIDE MONTH • </span>
@@ -76,7 +87,7 @@ function Blogs(){
                 </div>
                 <br />
                 <center>
-                    <button type="button" class="load-more-button" onClick={loadMore} style={{display : visible === length ? "none": "block"}}>Load More</button>
+                    <button type="button" class="load-more-button" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
                 </center>
                 <br />
             </div>
@@ -85,56 +96,24 @@ function Blogs(){
                 <h2 className="our-blogs-heading2-small pl-lg-5 pl-none">THIS WEEK</h2>
                 <h2 className="our-blogs-heading2 pl-lg-5 pl-none">Around the web</h2>
                 <h2 className="our-blogs-heading2-last pl-lg-5 pl-none pb-lg-4 pb-3">A curated list of articles from around the web, that drew our attention this week.*</h2>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
-                <div className="row pl-lg-5 pl-none pb-3">
-                    <div className="col-7">
-                        <p className="atw-heading">Gender as a gateway to inclusion of all</p>
-                        <p className="atw-summary">Tagline for blog one Tagling for blog one</p>
-                        <p className="atw-medium">Medium <br /><span className="atw-dnr">Aug 5 | 5 min</span></p>
-                    </div>
-                    <div className="col-5 text-center">
-                        <img src={atw} alt="" width="90%"/>
-                    </div>
-                </div>
+                { aroundTheWebs.slice(0,visible1).map((a)=>(
+                     <div className="row pl-lg-5 pl-none pb-3">
+                     <div className="col-7">
+                         <p className="atw-heading"><a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>{a.Title} </a></p>
+                         <p className="atw-summary">{a.Description}</p>
+                         <p className="atw-medium">{a.Website_Name}<br /><span className="atw-dnr">{a.Date} | {a.Reading_Time} mins</span></p>
+                     </div>
+                     <div className="col-5 text-center">
+                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={atw} alt="" width="90%"/></a>
+                     </div>
+                 </div>
+                ))
+                }
+                <br />
+                <center>
+                    <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4" onClick={loadMore1} style={{display : visible1 >= length1 || length1 <= 5 ? "none": "block"}}>Load More</button>
+                </center>
+                
                 <a href="/" style={{textDecoration : "none"}}>
                 <div className="row first-card mb-3">
                     <p className="first-card-heading pt-4">Have something to share? <br />Get in touch! <p className="first-card-summary pt-3">We would love to hear your story. </p></p>
