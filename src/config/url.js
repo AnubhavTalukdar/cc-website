@@ -1,1 +1,1 @@
-export const BASE_URL = "http://consciousculture.in/api";
+export const BASE_URL = "https://consciousculture.in/api";
