@@ -194,6 +194,18 @@
     .l-border {
         border-left: none;
     }
+    .social-icons-facebook {
+        width: 13px;
+        margin: 3px;
+        margin-bottom: 7px;
+       
+    }
+    
+    .social-icons-twitter, .social-icons-instagram {
+        width: 13px;
+        margin: 4px;
+        margin-bottom: 7px;
+    }
   }
 
   @media only screen and (max-width: 768px) {
@@ -1348,85 +1360,31 @@
     color: #707070;
 }
 
-.freeresource-card {
-    width:90%;
-    -webkit-backdrop-filter: blur(30px);
-    backdrop-filter: blur(30px);
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    background-color: #ffffff;
-    height: 250px;
-}
-
-.freeresource-card-heading {
-    font-size: 28px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.18;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
-}
-
-.freeresource-card-subheading {
-    font-size: 20px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
-}
-.freeresource-cardbottom {
-    width: 97%;
-    -webkit-backdrop-filter: blur(29px);
-    backdrop-filter: blur(29px);
-    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.6);
-    background-color: #231f20;
-    height: 50px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-.freeresource-cardbottom-text {
-    font-size: 24px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.21;
-    letter-spacing: normal;
-    text-align: left;
-    color: #ffffff;
-}
-
-.freeresource-endcard {
-    width: 92%;
-    -webkit-backdrop-filter: blur(29px);
-    backdrop-filter: blur(29px);
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    background-color: #000000;
-    height: 300px;
+.freeresources-card {
+    /* background-color: #34ADFF; */
+    background-image: -webkit-linear-gradient(70deg, #34ADFF 35%, #4CBFFF 35%);
+    min-height: 200px;
     border-radius: 15px;
-}
-.freeresource-endcard-text {
-    font-size: 28px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.09;
-    letter-spacing: normal;
-    text-align: center;
-    color: #ffffff;
+    cursor: pointer;
 }
 
-.freeresource-button {
-    background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+.freeresources-card:hover {
+    box-shadow: -3px 3px 28px -2px rgba(0,0,0,0.39);
+    -webkit-box-shadow: -3px 3px 28px -2px rgba(0,0,0,0.39);
+    -moz-box-shadow: -3px 3px 28px -2px rgba(0,0,0,0.39);
+}
+
+.freeresources-lastcard {
+    /* background-color: #34ADFF; */
+    background-image: -webkit-linear-gradient(70deg, #1E2029 35%, #353A44 35%);
+    min-height: 298px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.freeresources-lastcard:hover{
+    box-shadow: -3px 3px 28px -2px rgba(0,0,0,0.39);
+    -webkit-box-shadow: -3px 3px 28px -2px rgba(0,0,0,0.39);
+    -moz-box-shadow: -3px 3px 28px -2px rgba(0,0,0,0.39);
 }
 
 @media only screen and (max-width: 600px) {

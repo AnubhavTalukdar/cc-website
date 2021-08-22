@@ -7,7 +7,7 @@ import Nipman from "../assets/img/nipman.png"
 import Card1 from "../assets/img/card1.jpg"
 import Card2 from "../assets/img/card2.jpg"
 import SideArrow from "../assets/img/sidearrow.PNG"
-import BlogSecond from "../assets/img/blog.png"
+import HomepagePicture from "../assets/img/HomepagePicture.jpg"
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -91,13 +91,13 @@ function Homepage(){
   </div>
   <div className="carousel-inner">
     <div className="carousel-item active" data-bs-interval="3000">
-      <img src={BlogSecond} className="carousel-img d-block w-100" alt="carousel-img-1" />
+      <img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-1" />
     </div>
     <div className="carousel-item" data-bs-interval="3000">
-      <img src={BlogSecond} className="carousel-img d-block w-100" alt="carousel-img-2" />
+      <img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" />
     </div>
     <div className="carousel-item" data-bs-interval="3000">
-      <img src={BlogSecond} className="carousel-img d-block w-100" alt="carousel-img-3" />
+      <img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-3" />
     </div>
   </div>
   

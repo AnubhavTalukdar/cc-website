@@ -3,7 +3,7 @@ import React, {useState} from "react"
 import clipart2 from "../assets/img/clipart2.PNG"
 import SideArrow from "../assets/img/sidearrow.PNG"
 import Modal from 'react-bootstrap/Modal'
-
+import BookCover from "../assets/img/book.jpg"
 
 function FreeResources(){
     const [show, setShow] = useState(false);
@@ -21,46 +21,52 @@ function FreeResources(){
             <img className="clipart2" src={clipart2} alt="clipart1" width="100%" />
         </div >
         </div>
-        <div className="row mt-5 mb-5 container-fluid justify-content-center">
-        <div className="col-lg-5 pl-5 pt-5">
-            <div className="freeresource-card ml-3">
-                <p className="freeresource-card-heading px-4 py-3">Resource Name Can write in a lot of words, say 12 easily. </p>
-                <p className="freeresource-card-subheading px-4 py-1">Description of the resource</p>
+        <div className="row pt-5 pb-5 pl-lg-5 pl-0 container-fluid">
+            <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none">
+                <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={handleShow}>
+                    <div className="col-lg-4">
+                        <img className="freeresource-img" src={BookCover} height="200vh"/>
+                    </div>
+                    <div className="col-lg-8">
+                        <h5 style={{color : "white"}}>Free Resource Heading</h5>
+                        <br />
+                        <p>Description of the free resource</p>
+                    </div>
+                </div>
             </div>
-            <div className="freeresource-cardbottom">
-                <p className="freeresource-cardbottom-text pt-2 text-center">Download the PDF</p>
+            <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none">
+                <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={handleShow}>
+                    <div className="col-lg-4">
+                        <img className="freeresource-img" src={BookCover} height="200vh"/>
+                    </div>
+                    <div className="col-lg-8">
+                        <h5 style={{color : "white"}}>Free Resource Heading</h5>
+                        <br />
+                        <p>Description of the free resource</p>
+                    </div>
+                </div>
             </div>
+            <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none">
+                <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={handleShow}>
+                    <div className="col-lg-4">
+                        <img className="freeresource-img" src={BookCover} height="200vh"/>
+                    </div>
+                    <div className="col-lg-8">
+                        <h5 style={{color : "white"}}>Free Resource Heading</h5>
+                        <br />
+                        <p>Description of the free resource</p>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none" onClick={handleShow}>
+                <div className="freeresources-lastcard mt-3 row container-fluid py-5 px-5" onClick={handleShow}>
+                    <div className="col-lg-12 text-center">
+                        <h3 style={{color : "white"}}>Send a request for other free resources</h3>
+                    </div>
+                </div>
+            </div>           
         </div>
-        <div className="col-lg-5 pl-5 pt-5">
-            <div className="freeresource-card ml-3">
-            <p className="freeresource-card-heading px-4 py-3">Resource Name Can write in a lot of words, say 12 easily. </p>
-            <p className="freeresource-card-subheading px-4 py-1">Description of the resource</p>
-            </div>
-            <div className="freeresource-cardbottom">
-                <p className="freeresource-cardbottom-text pt-2 text-center">Download the PDF</p>
-            </div>
-        </div >
-        <div className="col-lg-5 pl-5 pt-5">
-            <div className="freeresource-card ml-3">
-                <p className="freeresource-card-heading px-4 py-3">Resource Name Can write in a lot of words, say 12 easily. </p>
-                <p className="freeresource-card-subheading px-4 py-1">Description of the resource</p>
-            </div>
-            <div className="freeresource-cardbottom">
-                <p className="freeresource-cardbottom-text pt-2 text-center">Download the PDF</p>
-            </div>
-        </div>
-        <div className="col-lg-5 pl-5 pt-5">
-            
-            <div className="freeresource-endcard ml-3">
-            <p className="freeresource-endcard-text px-4 py-3">Send a request for other <br/> free resources</p>
-            
-            <button className="freeresource-button mt-5 mr-3 float-right" onClick={handleShow}>
-            <img className="sidearrow mt-5 ml-5 " src={SideArrow} alt="side-arrow" />
-            </button>
-            
-            </div>
-        </div >
-        </div>
+    
         <Modal  
         show={show} onHide={handleClose}>
         <Modal.Header closeButton>
