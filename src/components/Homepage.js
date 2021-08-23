@@ -52,8 +52,7 @@ function Homepage(){
     let last = blogs.slice(-1)
 
     let lastf = blogs.slice(-5).reverse()
-    console.log(last)
-    console.log(lastf)
+   
     return(
         <>
             <div>
@@ -109,10 +108,8 @@ function Homepage(){
                 <div className="col-lg-7 pt-3">
                     { last.map((b) =>(
                         <div className="row pl-5 container-fluid">
-                        <div className="col-lg-5 col-sm-12 px-0">
-                           <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img src={BASE_URL + b.Placeholder_Image.url} alt="" width="100%"/></a>
-                        </div>
-                        <div className="col-lg-7 col-sm-12 pl-lg-5 pl-md-0 pl-0 pt-3 pt-lg-0 pb-0 pb-lg-4">
+                        
+                        <div className="col-lg-12 col-sm-12 pl-md-0 pl-0 pt-3 pt-lg-0 pb-0 pb-lg-4">
                            <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-highlight-heading">{b.Title}</p></a>
 
                            <p className="homepage-section2-highlight-read">{b.Summary}</p>

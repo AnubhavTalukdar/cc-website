@@ -24,6 +24,7 @@ function Blogs(){
     
 
     useEffect(() => { 
+        window.scroll(0,0)
         axios.get(`${BASE_URL}/blogs`)
         .then(response => {
             var b = arraySort(response.data, "id").reverse()
@@ -105,8 +106,11 @@ function Blogs(){
                     <h1 className="our-blogs-heading1 pl-5">Our Blogs</h1>
         
                     <div className="row mt-3 pl-5 pb-3">
-                        <div className="col-lg-4 col-sm-6">
-                            <InputLabel id="filter">Filter By</InputLabel>
+                        <div className="col-lg-4 col-sm-none">
+
+                        </div>
+                        <div className="col-lg-4 col-sm-6 mt-4">
+                            <InputLabel id="filter">Filter By Category</InputLabel>
                             <Select
                             labelId="filter"
                             id="filter"
@@ -121,10 +125,8 @@ function Blogs(){
                             
                             </Select>
                         </div>
-                        <div className="col-lg-4 col-sm-none">
-
-                        </div>
-                        <div className="col-lg-4 col-sm-6">
+                        
+                        <div className="col-lg-4 col-sm-6 mt-4">
                             <InputLabel id="sort">Sort By</InputLabel>
                             <Select
                             labelId="sort"

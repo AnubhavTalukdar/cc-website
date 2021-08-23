@@ -59,8 +59,8 @@
 /*Navbar*/
 
 .nav-logo {
-    width: 230px;
-    height: 67px
+    width: 190px;
+    height: 55px
 }
 
 .nav-link {
@@ -1362,10 +1362,14 @@
 
 .freeresources-card {
     /* background-color: #34ADFF; */
-    background-image: -webkit-linear-gradient(70deg, #34ADFF 35%, #4CBFFF 35%);
     min-height: 200px;
     border-radius: 15px;
     cursor: pointer;
+    
+}
+
+.freeresource-img {
+    height: 200px;
 }
 
 .freeresources-card:hover {
@@ -1391,7 +1395,28 @@
     .freeresources-text1  {
         font-size: 20px;
     }
+    .freeresources-card {
+       margin-left: 15px;
+    }
+    .freeresources-lastcard {
+        margin-left: 15px;
+    }
   }
+
+  @media only screen and (min-width:601px) and (max-width: 768px)  { 
+    .freeresources-card {
+        margin-left: 15px;
+     }
+    }
+
+    @media only screen and (min-width:1024px) and (max-height: 1366px)  { 
+        .freeresource-img {
+            height: 160px;
+        }
+        .freeresources-lastcard {
+            min-height: 258px;
+        }
+    }
 
 /*About Us*/
 .about-section1 {
