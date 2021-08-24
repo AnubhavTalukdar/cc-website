@@ -8,6 +8,7 @@ import FreeResourcesPage from './routes/FreeResourcesPage'
 import AboutUsPage from './routes/AboutUsPage'
 import ProductsPage from './routes/ProductsPage'
 import IndividualBlogPage from './routes/IndividualBlogPage'
+import NotFoundPage from './routes/NotFoundPage'
 import "./assets/css/style.css"
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <AboutUsPage path="/about" />
       <ProductsPage path="/products" />
       <IndividualBlogPage path="/blog/:blogId" />
+      <NotFoundPage path="*" />
       </Router>
     </div>
   );

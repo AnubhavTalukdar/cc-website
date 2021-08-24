@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import { useParams } from "@reach/router";
 import { BASE_URL } from "../config/url";
 import axios from "axios"
-import atw from "../assets/img/atw.png"
 
 function IndividualBlog(){
 
@@ -70,7 +69,7 @@ function IndividualBlog(){
                 
                 <h2 className="our-blogs-heading2-small pl-lg-5 pl-none">THIS WEEK</h2>
                 <h2 className="our-blogs-heading2 pl-lg-5 pl-none">Around the web</h2>
-                <h2 className="our-blogs-heading2-last pl-lg-5 pl-none pb-lg-4 pb-3">A curated list of articles from around the web, that drew our attention this week.*</h2>
+                <h2 className="our-blogs-heading2-last pl-lg-5 pl-none pb-lg-4 pb-3">A curated list of articles from around the web, that drew our attention this week.</h2>
                 { aroundTheWebs.slice(0,visible).map((a)=>(
                      <div className="row pl-lg-5 pl-none pb-3">
                      <div className="col-7">
@@ -79,7 +78,7 @@ function IndividualBlog(){
                          <p className="atw-medium">{a.Website_Name}<br /><span className="atw-dnr">{a.Date} | {a.Reading_Time} mins</span></p>
                      </div>
                      <div className="col-5 text-center">
-                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={atw} alt="" width="90%"/></a>
+                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={BASE_URL + a.Image.formats.thumbnail.url} alt="" width="90%"/></a>
                      </div>
                  </div>
                 ))

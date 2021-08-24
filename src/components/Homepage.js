@@ -14,6 +14,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { BASE_URL } from "../config/url";
 import axios from "axios"
+import ProgressBar from 'react-bootstrap/ProgressBar'
+import Cookies from 'js-cookie'
 var arraySort = require('array-sort');
 
 const useStyles = makeStyles((theme) => ({
@@ -33,8 +35,75 @@ const useStyles = makeStyles((theme) => ({
 function Homepage(){
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
-  
-  
+   
+    const [id, setId] = useState(0)
+    const [question, setQuestion] = useState("")
+    const [questionDesc, setQuestionDesc] = useState("")
+    const [subQuestion, setSubQuestion] = useState("")
+    const [optionA, setOptionA] = useState("")
+    const [optionB, setOptionB] = useState("")
+    const [optionC, setOptionC] = useState("")
+    const [optionD, setOptionD] = useState("")
+    const [responseA, setResponseA] = useState(0)
+    const [responseB, setResponseB] = useState(0)
+    const [responseC, setResponseC] = useState(0)
+    const [responseD, setResponseD] = useState(0)
+    const [op1, setOp1] = useState(0)
+    const [op2, setOp2] = useState(0)
+    const [op3, setOp3] = useState(0)
+    const [op4, setOp4] = useState(0)
+    const [outputA, setOutputA] = useState(0)
+    const [outputB, setOutputB] = useState(0)
+    const [outputC, setOutputC] = useState(0)
+    const [outputD, setOutputD] = useState(0)
+    const [formTitle, setFormTitle] = useState("")
+    const [formLink, setFormLink] = useState("")
+
+    const Total = outputA + outputB + outputC + outputD
+
+    const submit = (e) => {
+        e.preventDefault()
+        if(optionC === "" && optionD === ""){
+            axios.put(`${BASE_URL}/home-page-quizs/${id}`, {Response_A: responseA+op1, Response_B: responseB+op2})
+            .then(response => {
+                console.log(response)
+
+                setOutputA(response.data.Response_A)
+                setOutputB(response.data.Response_B)
+
+                var question= document.querySelector("#question");
+                question.style.display= "none";
+
+                var responses= document.querySelector("#responses");
+                responses.style.display= "block";
+
+                
+                Cookies.set("Quiz", "Yes" , { expires: 7 })
+            })
+        }
+        else{
+            axios.put(`${BASE_URL}/home-page-quizs/${id}`, {Response_A: responseA+op1, Response_B: responseB+op2, Response_C: responseC+op3, Response_D: responseD+op4})
+            .then(response => {
+                console.log(response)
+
+                setOutputA(response.data.Response_A)
+                setOutputB(response.data.Response_B)
+                setOutputC(response.data.Response_C)
+                setOutputD(response.data.Response_D)
+
+                var question= document.querySelector("#question");
+                question.style.display= "none";
+
+                var responses= document.querySelector("#responses");
+                responses.style.display= "block";
+
+                
+                Cookies.set("Quiz", "Yes" , { expires: 7 })
+            })
+        }
+        
+    }
+
     const handleClose = () => {
       setOpen(false);
     };
@@ -47,15 +116,53 @@ function Homepage(){
             setBlogs(arraySort(response.data, "id"))
         })
 
+        axios.get(`${BASE_URL}/home-page-quizs`)
+        .then(response => {
+            console.log(response.data)
+            var quizs = arraySort(response.data, "id")
+            setId(quizs[quizs.length -1].id)
+            setQuestion(quizs[quizs.length -1].Question)
+            setQuestionDesc(quizs[quizs.length -1].Question_Description)
+            setSubQuestion(quizs[quizs.length -1].Sub_Question)
+            setOptionA(quizs[quizs.length -1].Option_A)
+            setOptionB(quizs[quizs.length -1].Option_B)
+
+            if(quizs[quizs.length -1].Option_C === null && quizs[quizs.length -1].Option_D === null){
+                setOptionC("")
+                setOptionD("")
+            }
+            else{
+                setOptionC(quizs[quizs.length -1].Option_C)
+                setOptionD(quizs[quizs.length -1].Option_D)
+            }
+
+            setResponseA(quizs[quizs.length -1].Response_A)
+            setResponseB(quizs[quizs.length -1].Response_B)
+            setResponseC(quizs[quizs.length -1].Response_C)
+            setResponseD(quizs[quizs.length -1].Response_D)
+
+            if(quizs[quizs.length -1].Form_Title !== null){
+                setFormTitle(quizs[quizs.length -1].Form_Title)
+                setFormLink(quizs[quizs.length -1].Form_Link)
+            }
+
+            setOutputA(quizs[quizs.length -1].Response_A)
+            setOutputB(quizs[quizs.length -1].Response_B)
+            setOutputC(quizs[quizs.length -1].Response_C)
+            setOutputD(quizs[quizs.length -1].Response_D)
+        })
+
     }, [])
 
     let last = blogs.slice(-1)
 
     let lastf = blogs.slice(-5).reverse()
+
+    
    
     return(
         <>
-            <div>
+        <div>
         <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -141,23 +248,55 @@ function Homepage(){
                     
                     
                 </div>
-                <div className="col-lg-5 pt-3 pl-5">
-                    <p className="homepage-section2-question-heading">Is the following situation an example of mansplaining?</p>
-                    <p className="homepage-section2-question-subheading1">A male director tells his cameraperson to capture women’s narratives on periods in a certain way. Being a woman, the cameraperson feels she knows how to capture the story as she knows about periods better than the director. </p>
-                    <p className="homepage-section2-question-subheading2">Is the director mansplaining?</p>
+                <div className="col-lg-5 pt-3 pl-5" id="question" style={{display : Cookies.get("Quiz") === "Yes" ? "none": "block"}}>
+                    <form onSubmit={submit}>
+                    <p className="homepage-section2-question-heading">{question}</p>
+                    <p className="homepage-section2-question-subheading1">{questionDesc}</p>
+                    <p className="homepage-section2-question-subheading2">{subQuestion}</p>
                     <br />
+                    { optionC === "" && optionD === "" ?
+                    <>
                     <div className="row container-fluid">
-                    <div className="col-6 px-0">
-                    <input type="radio" id="op1" name="response"/>
-                    &nbsp;&nbsp;
-                    <label className="homepage-section2-question-label">Yes, he is</label>
+                        <div className="col-6 px-0">
+                        <input type="radio" id="op1" name="response" onClick={()=>{setOp1(1);setOp2(0);setOp3(0);setOp4(0);}} required/>
+                        &nbsp;&nbsp;
+                        <label className="homepage-section2-question-label">{optionA}</label>
+                        </div>
+                        <div className="col-6 px-0">
+                        <input type="radio" id="op2" name="response" onClick={()=>{setOp1(0);setOp2(1);setOp3(0);setOp4(0);}} required/>
+                        &nbsp;&nbsp;
+                        <label className="homepage-section2-question-label">{optionB}</label>
+                        </div>
                     </div>
-                    <div className="col-6 px-0">
-                    <input type="radio" id="op2" name="response"/>
-                    &nbsp;&nbsp;
-                    <label className="homepage-section2-question-label">No, he is not</label>
+                    </> :
+                    <>
+                    <div className="row container-fluid">
+                        <div className="col-6 px-0">
+                        <input type="radio" id="op1" name="response" onClick={()=>{setOp1(1);setOp2(0);setOp3(0);setOp4(0);}} required/>
+                        &nbsp;&nbsp;
+                        <label className="homepage-section2-question-label" >{optionA}</label>
+                        </div>
+                        <div className="col-6 px-0">
+                        <input type="radio" id="op2" name="response" onClick={()=>{setOp1(0);setOp2(1);setOp3(0);setOp4(0);}} required/>
+                        &nbsp;&nbsp;
+                        <label className="homepage-section2-question-label" >{optionB}</label>
+                        </div>
                     </div>
+                    <div className="row container-fluid">
+                        <div className="col-6 px-0">
+                        <input type="radio" id="op3" name="response" onClick={()=>{setOp1(0);setOp2(0);setOp3(1);setOp4(0);}} required/>
+                        &nbsp;&nbsp;
+                        <label className="homepage-section2-question-label" >{optionC}</label>
+                        </div>
+                        <div className="col-6 px-0">
+                        <input type="radio" id="op4" name="response" onClick={()=>{setOp1(0);setOp2(0);setOp3(0);setOp4(1);}} required/>
+                        &nbsp;&nbsp;
+                        <label className="homepage-section2-question-label" >{optionD}</label>
+                        </div>
                     </div>
+                    </>
+                    }
+                   
                     <br />
                     <br />
                     <br />
@@ -167,6 +306,29 @@ function Homepage(){
                     <button className="homepage-section2-question-button">Submit</button>
                     </div>
                     </div>
+                    </form>
+                </div>
+                <div className="col-lg-5 pt-3 pl-5 my-auto" id="responses" style={{display : Cookies.get("Quiz") === "Yes" ? "block": "none"}}>
+                    <p className="homepage-section2-question-subheading2 text-center">Thank you for participating!</p>
+                    <br />
+                    <ProgressBar style={{height : "50px"}}>
+                        <ProgressBar  variant="success" now={((outputA)/(Total))*100} label={`${optionA} - ${(((outputA)/(Total))*100).toFixed(2)}%`} />
+                        <ProgressBar  variant="info" now={((outputB)/(Total))*100} label={`${optionB} - ${(((outputB)/(Total))*100).toFixed(2)}%`} />
+                        <ProgressBar  variant="warning" now={((outputC)/(Total))*100} label={`${optionC} - ${(((outputC)/(Total))*100).toFixed(2)}%`} />
+                        <ProgressBar  variant="danger" now={((outputD)/(Total))*100} label={`${optionD} - ${(((outputD)/(Total))*100).toFixed(2)}%`} />
+                    </ProgressBar>
+                    <br/>
+                    { formTitle !== "" ?
+                    <>
+                    <p className="homepage-section2-question-subheading2 text-center">{formTitle}</p>
+                    
+                    <center>
+                    <a href={formLink} rel="noopener noreferrer" target="_blank">Click here!</a>
+                    </center>
+                    </> :
+                    null 
+                    }
+                    
                 </div>
             </div>
             <br />
