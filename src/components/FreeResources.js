@@ -98,9 +98,9 @@ function FreeResources(){
         </div >
         </div>
         <div className="row mt-3 pl-lg-5 container-fluid pr-lg-5 pr-0">
-            <div className="col-lg-8 col-md-4 col-sm-0 mt-2">
+            <div className="col-lg-9 col-md-4 col-sm-0 mt-2">
             </div>
-            <div className="col-lg-4 col-md-8 col-sm-6 mt-2 pr-lg-5 pr-md-5 pr-0">
+            <div className="col-lg-3 col-md-8 col-sm-6 mt-2 pr-lg-5 pr-md-5 pr-0">
                 <InputLabel id="filter">Filter By Category</InputLabel>
                 <Select
                 labelId="filter"
@@ -172,7 +172,7 @@ function FreeResources(){
             <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
         </center>
     
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} centered onHide={handleClose}>
         <Modal.Header closeButton>
            <Modal.Title>Request a Free Resource</Modal.Title>
         </Modal.Header>
@@ -200,7 +200,7 @@ function FreeResources(){
         </div>
         </Modal.Body>
       </Modal>
-      <Modal show={show1} onHide={handleClose1}>
+      <Modal show={show1} centered onHide={handleClose1}>
         <Modal.Header closeButton>
            Please enter your Email Address
         </Modal.Header>
@@ -222,13 +222,14 @@ function FreeResources(){
             </form>
         </Modal.Body>
       </Modal>
-      <Modal show={show2} onHide={handleClose2}>
-        <Modal.Header closeButton>
-
-        </Modal.Header>
+      <Modal show={show2} centered onHide={handleClose2} dialogClassName="modal-90w">
         <Modal.Body>
-        <div>
+        <div className="py-3">
+            <center>
             <h6>Please check your inbox for your Free Resource!</h6>
+         
+            <button className="btn btn-info mt-2 float-right mr-3" onClick={()=>handleClose2()}>Okay</button>
+            </center>
         </div>
         </Modal.Body>
       </Modal>

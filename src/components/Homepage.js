@@ -8,6 +8,8 @@ import Card1 from "../assets/img/card1.jpg"
 import Card2 from "../assets/img/card2.jpg"
 import SideArrow from "../assets/img/sidearrow.PNG"
 import HomepagePicture from "../assets/img/HomepagePicture.jpg"
+import HomepagePicture1 from "../assets/img/HomepagePicture1.jpg"
+import HomepagePicture2 from "../assets/img/HomepagePicture2.jpg"
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -16,6 +18,8 @@ import { BASE_URL } from "../config/url";
 import axios from "axios"
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Cookies from 'js-cookie'
+import {Link} from "@reach/router"
+import Carousel from 'react-bootstrap/Carousel'
 var arraySort = require('array-sort');
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Homepage(){
+    
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
    
@@ -77,8 +82,8 @@ function Homepage(){
                 var responses= document.querySelector("#responses");
                 responses.style.display= "block";
 
-                
-                Cookies.set("Quiz", "Yes" , { expires: 7 })
+                Cookies.set("QuizId", id, { expires: 100 })
+                Cookies.set("Quiz", "Yes" , { expires: 100 })
             })
         }
         else{
@@ -97,8 +102,8 @@ function Homepage(){
                 var responses= document.querySelector("#responses");
                 responses.style.display= "block";
 
-                
-                Cookies.set("Quiz", "Yes" , { expires: 7 })
+                Cookies.set("QuizId", id, { expires: 100 })
+                Cookies.set("Quiz", "Yes" , { expires: 100 })
             })
         }
         
@@ -111,15 +116,17 @@ function Homepage(){
     const [blogs, setBlogs] = useState([])
 
     useEffect(() => { 
+        window.scroll(0,0)
         axios.get(`${BASE_URL}/blogs`)
         .then(response => {
-            setBlogs(arraySort(response.data, "id"))
+            setBlogs(arraySort(response.data, "Date_of_Publishing"))
         })
 
         axios.get(`${BASE_URL}/home-page-quizs`)
         .then(response => {
             console.log(response.data)
             var quizs = arraySort(response.data, "id")
+            console.log(quizs[quizs.length -1].id)
             setId(quizs[quizs.length -1].id)
             setQuestion(quizs[quizs.length -1].Question)
             setQuestionDesc(quizs[quizs.length -1].Question_Description)
@@ -158,8 +165,7 @@ function Homepage(){
 
     let lastf = blogs.slice(-5).reverse()
 
-    
-   
+
     return(
         <>
         <div>
@@ -186,33 +192,19 @@ function Homepage(){
             </div>
             </Fade>
         </Modal>
-        </div>    
+        </div>  
         <div className="homepage-section1 container-fluid px-0">
+            <Carousel>
+                <Carousel.Item interval={4000}><img src={HomepagePicture2} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
+                <Carousel.Item interval={4000}><img src={HomepagePicture1} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
+                <Carousel.Item interval={4000}><img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
+            </Carousel>
         
-        <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
-  <div className="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="carousel-dots active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" className="carousel-dots"aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" className="carousel-dots" aria-label="Slide 3"></button>
-  </div>
-  <div className="carousel-inner">
-    <div className="carousel-item active" data-bs-interval="3000">
-      <img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-1" />
-    </div>
-    <div className="carousel-item" data-bs-interval="3000">
-      <img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" />
-    </div>
-    <div className="carousel-item" data-bs-interval="3000">
-      <img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-3" />
-    </div>
-  </div>
-  
-</div>
-
         </div>
-        <div className="homepage-section2 container-fluid px-0 mt-5">
-            <div className="row container-fluid">
-                <div className="col-lg-7 pt-3">
+        
+        <div className="homepage-section2 container-fluid px-0 mt-lg-5 mt-md-5 mt-3">
+            <div className="row container-fluid right-padding-remover">
+                <div className="col-lg-7 right-padding-remover pt-3">
                     { last.map((b) =>(
                         <div className="row pl-5 container-fluid">
                         
@@ -232,7 +224,7 @@ function Homepage(){
                     {lastf.slice(1,5).map((b) =>(
                         <div className="col-lg-6 pt-2 col-sm-12 px-0">
                         <div className="row px-0">
-                        <div className="col-4">
+                        <div className="col-4 thumbnail-margin-remover">
                             <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img className="homepage-section2-blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt="blog-img"/></a>
                         </div>
                         <div className="col-8">
@@ -248,7 +240,7 @@ function Homepage(){
                     
                     
                 </div>
-                <div className="col-lg-5 pt-3 pl-5" id="question" style={{display : Cookies.get("Quiz") === "Yes" ? "none": "block"}}>
+                <div className="col-lg-5 pt-3 pl-5" id="question" style={{display : ((Cookies.get("Quiz") !== "Yes") && (Cookies.get("QuizId") !== id.toString() || Cookies.get("QuizId") === undefined)) ? "block" : "none"}}>
                     <form onSubmit={submit}>
                     <p className="homepage-section2-question-heading">{question}</p>
                     <p className="homepage-section2-question-subheading1">{questionDesc}</p>
@@ -308,16 +300,47 @@ function Homepage(){
                     </div>
                     </form>
                 </div>
-                <div className="col-lg-5 pt-3 pl-5 my-auto" id="responses" style={{display : Cookies.get("Quiz") === "Yes" ? "block": "none"}}>
+                <div className="col-lg-5 pt-3 pl-4 my-auto" id="responses" style={{display : ((Cookies.get("Quiz") === "Yes") && (Cookies.get("QuizId") === id.toString())) ? "block" : "none"}}>
                     <p className="homepage-section2-question-subheading2 text-center">Thank you for participating!</p>
                     <br />
                     <ProgressBar style={{height : "50px"}}>
-                        <ProgressBar  variant="success" now={((outputA)/(Total))*100} label={`${optionA} - ${(((outputA)/(Total))*100).toFixed(2)}%`} />
-                        <ProgressBar  variant="info" now={((outputB)/(Total))*100} label={`${optionB} - ${(((outputB)/(Total))*100).toFixed(2)}%`} />
-                        <ProgressBar  variant="warning" now={((outputC)/(Total))*100} label={`${optionC} - ${(((outputC)/(Total))*100).toFixed(2)}%`} />
-                        <ProgressBar  variant="danger" now={((outputD)/(Total))*100} label={`${optionD} - ${(((outputD)/(Total))*100).toFixed(2)}%`} />
+                        <ProgressBar  variant="success" now={((outputA)/(Total))*100} label={`A - ${(((outputA)/(Total))*100).toFixed(1)}%`} />
+                        <ProgressBar  variant="info" now={((outputB)/(Total))*100} label={`B - ${(((outputB)/(Total))*100).toFixed(1)}%`} />
+                        <ProgressBar  variant="warning" now={((outputC)/(Total))*100} label={`C - ${(((outputC)/(Total))*100).toFixed(1)}%`} />
+                        <ProgressBar  variant="danger" now={((outputD)/(Total))*100} label={`D - ${(((outputD)/(Total))*100).toFixed(1)}%`} />
                     </ProgressBar>
                     <br/>
+                    { optionC === "" && optionD === "" ?
+                    <>
+                    <div className="row container-fluid">
+                        <div className="col-6 px-0">
+                            <label className="homepage-section2-question-label" >A: {optionA}</label>
+                        </div>
+                        <div className="col-6 px-0">
+                            <label className="homepage-section2-question-label" >B: {optionB}</label>
+                        </div>
+                    </div>
+                    </> :
+                    <>
+                    <div className="row container-fluid">
+                        <div className="col-6 px-0">
+                            <label className="homepage-section2-question-label" >A: {optionA}</label>
+                        </div>
+                        <div className="col-6 px-0">
+                            <label className="homepage-section2-question-label" >B: {optionB}</label>
+                        </div>
+                    </div>
+                    <div className="row container-fluid">
+                        <div className="col-6 px-0">
+                            <label className="homepage-section2-question-label" >C: {optionC}</label>
+                        </div>
+                        <div className="col-6 px-0">
+                            <label className="homepage-section2-question-label" >D: {optionD}</label>
+                        </div>
+                    </div>
+                    </>
+                    }
+                    <br />
                     { formTitle !== "" ?
                     <>
                     <p className="homepage-section2-question-subheading2 text-center">{formTitle}</p>
@@ -337,14 +360,13 @@ function Homepage(){
         </div>
         <div className="homepage-section3 container-fluid px-0">
             <div className="row container-fluid">
-                <div className="col-12">
+                <div className="col-12 pt-lg-0 pt-4">
                     <h1 className="hompage-section3-heading pl-3">Our Offerings</h1><br />
                     <p className="hompage-section3-subheading1 pl-4">We all wear several hats. <br /><span className="hompage-section3-subheading2">Choose the capacity in which you are visiting us:</span></p> 
                 </div>
             </div>
-            <br />
-            <div className="row container-fluid pl-5 pr-lg-3 pr-none homepage-section3-cards">
-                <div className="col-lg-4 col-sm-12 mt-5">
+            <div className="row container-fluid pl-5 pr-lg-3 pr-none mt-3 homepage-section3-cards">
+                <div className="col-lg-4 col-sm-12 mt-lg-5 mt-3">
                     <div className="homepage-section3-card" />
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
@@ -359,7 +381,7 @@ function Homepage(){
             </div>
             <div className="row container-fluid pl-5 pr-lg-5 pr-none mt-5 homepage-section3-end justify-content-center">
                 <div className="col-lg-4 col-sm-12 homepage-section3-endbutton">
-                    <p className="homepage-section3-endbuttontext text-center pt-2">Read more about our products</p>
+                <Link to="/products" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><p className="homepage-section3-endbuttontext text-center pt-2">Read more about our products</p></Link>
                 </div>
 
             </div> 
@@ -369,8 +391,10 @@ function Homepage(){
         </div>
        
         <div className="homepage-section4 container-fluid px-0">
-        
+        <div className="homepage-section4-row text-center d-lg-none d-md-none d-block">&#128945; &#128945; &#128945;</div>
+        <br />
         <div className="row container-fluid homepage-section4-row pl-5">
+
             <div className="col-lg-5 col-sm-12 pl-lg-5 pl-none">
                 <p className="homepage-section4-text1">"Our team at Trucup found CIELead Untapped analysis report highly useful. After having gone through many psychometric tests in my professional career, I thought I had a good understanding of my unconscious bias. However, Untapped brought a lot of internalized opinions to the surface. The tools provided by CIELead helped us design a better communication strategy to reach out to diverse customer segments."</p>
                 <p className="homepage-section4-text2">Alakshi Tomar <br /><span className="homepage-section4-text3">Cofounder, TruCup</span></p>

@@ -46,20 +46,20 @@ function Footer(){
     }, [])
     return(
         <footer>
-            <div className="footer container-fluid pt-5 pb-2">
+            <div className="footer container-fluid pt-lg-5 pt-md-5 pt-3 pb-2">
                 <div className="row container-fluid pl-5">
                 <div className="col-lg-3 col-md-6 col-xs-12 col-sm-12 pt-3 pb-1 text-center">
                     <img className="footer-logo" src={logobw} alt="logo-bw" />
                 </div>
-                <div className="col-lg-3 col-md-6 col-xs-12 col-sm-12 pt-4 pb-1 text-lg-right text-center pr-lg-5 pr-none">
-                    <p className="footer-column2-text">Get in touch <br /> with us!</p>
+                <div className="col-lg-3 col-md-6 col-xs-12 col-sm-12 pt-4 pb-lg-1 pb-md-1 pb-3 text-lg-right text-center pr-lg-5 pr-none">
+                    <p className="footer-column2-text">Get in touch <br className="d-lg-block d-md-block d-none"/> with us!</p>
                     
                 </div>
                 <div className="col-lg-3 col-md-6 col-xs-12 col-sm-12 text-lg-left text-center pl-lg-5 pr-none l-border r-border">
                 <p className="footer-column3-text">You could drop us a message <a className="footer-anchor" href="/contactus/#contactUsForm">here.</a></p>
                 <p className="footer-column3-text">Or write to us at <br/><a className="footer-anchor" href={"mailto:"+email} target="_blank" rel="noopener noreferrer">{email}</a></p>
                 <div className="footer-column3-text">
-                    Follow us : 
+                    <span className="d-lg-block d-md-block d-none">Follow us : </span>
                     <a href={facebook} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" /> 
                     </a>

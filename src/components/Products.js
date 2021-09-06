@@ -1,4 +1,4 @@
-import React from "react"
+import React , {useEffect} from "react"
 import products from "../assets/img/products.png"
 import products2 from "../assets/img/Product2.png"
 import PS1 from "../assets/img/ProductService1.jpg"
@@ -17,6 +17,10 @@ function Products(){
         { width: 768, itemsToShow: 4,itemsToScroll: 4 },
         { width: 1400, itemsToShow: 4,itemsToScroll: 4 },
       ];
+
+      useEffect(() => { 
+        window.scroll(0,0)
+    }, [])
 
     return(
         <>

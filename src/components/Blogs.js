@@ -18,6 +18,8 @@ function Blogs(){
     const [length, setLength] = useState(0)
     const [visible1, setVisible1] = useState(5)
     const [length1, setLength1] = useState(0)
+    const [visible2, setVisible2] = useState(5)
+    const [length2, setLength2] = useState(0)
     const [filter, setFilter] = useState("All")
     const [sort, setSort] = useState("Newest")
     
@@ -26,11 +28,12 @@ function Blogs(){
         window.scroll(0,0)
         axios.get(`${BASE_URL}/blogs`)
         .then(response => {
-            var b = arraySort(response.data, "id").reverse()
-            setBlogs(arraySort(response.data, "id").reverse())
+            var b = arraySort(response.data, "Date_of_Publishing").reverse()
+            setBlogs(arraySort(response.data, "Date_of_Publishing").reverse())
             setLast(b.slice(0,1))
-            setFilteredBlogs(arraySort(response.data, "id").reverse())
+            setFilteredBlogs(arraySort(response.data, "Date_of_Publishing").reverse())
             setLength(response.data.length)
+            setLength2(response.data.length)
         })
 
         axios.get(`${BASE_URL}/around-the-webs`)
@@ -54,6 +57,10 @@ function Blogs(){
         setVisible1((prevValue) => prevValue + 3)
     }
 
+    const loadMore2 = (e) => {
+        setVisible2((prevValue) => prevValue + 3)
+    }
+
     const changeFilter = (e) => {
         var s = e.target.value
         setFilter(s)
@@ -62,16 +69,17 @@ function Blogs(){
             return blog.category.name === s
         })
         setFilteredBlogs(b)
+        setLength2(b.length)
         
     }
 
     const changeSort = (e) => {
         setSort(e.target.value)
-        if(e.target.value === "Oldest"){
+        if(e.target.value === "Newest"){
             setBlogs(arraySort(blogs, "id"))
             setFilteredBlogs(arraySort(filteredBlogs, "id"))
         }
-        else if(e.target.value === "Newest"){
+        else if(e.target.value === "Oldest"){
             setBlogs(arraySort(blogs, "id").reverse())
             setFilteredBlogs(arraySort(filteredBlogs, "id").reverse())
         }
@@ -99,10 +107,11 @@ function Blogs(){
                 ))}
             </div>
         </div>
+        <br />
         <div className="row pl-lg-5 pl-md-5 pr-lg-5 pl-3 pr-0 container-fluid">
             <div className="col-lg-7 col-sm-12 pl-lg-5 pl-none">
                 <div className="row">
-                    <h1 className="our-blogs-heading1 pl-5">Our Blogs</h1>
+                    <h1 className="our-blogs-heading2 pl-5">Our Blogs</h1>
         
                     <div className="row mt-3 pl-5 pb-3">
                         <div className="col-lg-4 col-sm-none">
@@ -162,8 +171,25 @@ function Blogs(){
                     ))
                     
                     }
+                    <br />
+                    <center>
+                        <button type="button" class="load-more-button" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
+                    </center>
+                    <br />
                     </> : 
                     <>
+                    { filteredBlogs.length === 0 ?
+                        <>  
+                            
+                            <center>
+                            <p className="no-blogs">
+                                No blogs found!
+                            </p>
+                            </center>
+                        </>
+                        :
+                        null
+                    }
                     { 
                     filteredBlogs.slice(0,visible).map((b) =>(
                         
@@ -183,21 +209,21 @@ function Blogs(){
                     ))
                     
                     }
+                    <center>
+                        <button type="button" class="load-more-button" onClick={loadMore2} style={{display : visible2 >= length2 || length2 <= 5 ? "none": "block"}}>Load More</button>
+                    </center>
+                    <br />
                     </>
                     }
                     
            
                 </div>
-                <br />
-                <center>
-                    <button type="button" class="load-more-button" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
-                </center>
-                <br />
+                
             </div>
-            <div className="col-lg-5 col-sm-12 pl-5">
+            <div className="col-lg-5 col-sm-12 pl-5 mt-5 mt-lg-0">
                 <div className="row">
                 <h2 className="our-blogs-heading2-small pl-lg-5 pl-none">THIS WEEK</h2>
-                <h2 className="our-blogs-heading2 pl-lg-5 pl-none">Around the web</h2>
+                <h2 className="our-blogs-heading1 pl-lg-5 pl-none">Around the web</h2>
                 <h2 className="our-blogs-heading2-last pl-lg-5 pl-none pb-lg-4 pb-3">A curated list of articles from around the web, that drew our attention this week.</h2>
                 { aroundTheWebs.slice(0,visible1).map((a)=>(
                      <div className="row pl-lg-5 pl-none pb-3">
@@ -206,8 +232,8 @@ function Blogs(){
                          <p className="atw-summary">{a.Description}</p>
                          <p className="atw-medium">{a.Website_Name}<br /><span className="atw-dnr">{a.Date} | {a.Reading_Time} mins</span></p>
                      </div>
-                     <div className="col-5 text-center">
-                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={BASE_URL + a.Image.formats.thumbnail.url} alt="" width="90%"/></a>
+                     <div className="col-5 text-center left-padding-remover right-padding-remover">
+                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={BASE_URL + a.Image.formats.thumbnail.url} alt="" width="100%"/></a>
                      </div>
                  </div>
                 ))

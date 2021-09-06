@@ -71,8 +71,8 @@ function ContactUs(){
     <>
     <div className="row pt-5 container-fluid justify-content-center">
         <div className="col-lg-5 pl-5 pb-5 mt-auto">
-            <p className="contact-us-text1">We always love hearing <br/>from you!</p>
-            <p className="contact-us-text1"> Send us your queries, give us feedback <br/>or start a conversation or join in/<br/>contribute/ collaborate!</p>
+            <p className="contact-us-text1">We always love hearing <br className="d-lg-block d-md-block d-none"/>from you!</p>
+            <p className="contact-us-text1"> Send us your queries, give us feedback <br/>or start a conversation or join in/<br/>contribute/collaborate!</p>
         </div>
         <div className="col-lg-5 pl-5 text-center text-lg-right">
             <img className="clipart1" src={clipart1} alt="clipart1" width="85%" />
@@ -85,15 +85,15 @@ function ContactUs(){
             <div className="col-lg-7 col-sm-12 col-xs-12 mt-5 mb-5 pl-2 pr-2 pl-lg-5 pr-lg-5" style={{borderRadius : "30px", backgroundColor : "white"}}>
                 <form onSubmit={submit}>
                 <br />
-                <input type="text" class="contact-us-input form-control" id="name" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} required/>
+                <input type="text" className="contact-us-input form-control" id="name" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} required/>
                 <br />
-                <input type="email" class="contact-us-input form-control" id="email" placeholder="Email" value={cEmail} onChange={(e)=>setCEmail(e.target.value)} required/>
+                <input type="email" className="contact-us-input form-control" id="email" placeholder="Email" value={cEmail} onChange={(e)=>setCEmail(e.target.value)} required/>
                 <br />
-                <input type="text" class="contact-us-input form-control" id="company" placeholder="Company" value={company} onChange={(e)=>setCompany(e.target.value)}/>
+                <input type="text" className="contact-us-input form-control" id="company" placeholder="Company" value={company} onChange={(e)=>setCompany(e.target.value)}/>
                 <br />
-                <input type="number" class="contact-us-input form-control" id="contact" placeholder="Contact" value={number} onChange={(e)=>setNumber(e.target.value)} required/>
+                <input type="number" className="contact-us-input form-control" id="contact" placeholder="Contact" value={number} onChange={(e)=>setNumber(e.target.value)} required/>
                 <br />
-                <textarea class="contact-us-message form-control" id="FormControlTextarea1" rows="8" placeholder="Message" value={message} onChange={(e)=>setMessage(e.target.value)} required/>
+                <textarea className="contact-us-message form-control" id="FormControlTextarea1" rows="8" placeholder="Message" value={message} onChange={(e)=>setMessage(e.target.value)} required/>
                 <br />
                 <button type="submit" className="contact-us-button float-right">Submit</button>
                 <br />
@@ -103,10 +103,10 @@ function ContactUs(){
             <div className="col-lg-5 col-sm-12 col-xs-12 mt-lg-5 mt-2 mb-lg-5 mb-2 pl-lg-5 pl-2">
                 <br />
                 <br />
-                <p className="contact-us-text2">{email}</p>
+                <a href={"mailto:"+email} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><p className="contact-us-text2">{email}</p></a>
                 <p className="contact-us-text3 mt-lg-5 mb-lg-5 mt-2 mb-2">{address1} <br />{address2}<br />{cp}</p>
-                <p className="contact-us-text4 mb-lg-5 mb-2">{phone}</p>
-                <p className="contact-us-text2">Our FAQ Section</p>
+                <a  href={"tel:"+phone} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><p className="contact-us-text4 mb-lg-5 mb-2">{phone}</p></a>
+                <p className="contact-us-text2 mt-lg-0 mt-md-0 mt-3">Our FAQ Section</p>
                 <p>
                 <a href={facebook} target="_blank" rel="noopener noreferrer">
                     <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" /> 

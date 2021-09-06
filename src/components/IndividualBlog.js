@@ -64,7 +64,7 @@ function IndividualBlog(){
 
             </div>
            
-            <div className="col-lg-4 col-sm-12 pl-lg-5 pl-none mt-3 mt-lg-none">
+            <div className="col-lg-4 col-sm-12 pl-lg-5 pl-none mt-5 mt-lg-none">
                 <div className="row">
                 
                 <h2 className="our-blogs-heading2-small pl-lg-5 pl-none">THIS WEEK</h2>
@@ -77,8 +77,8 @@ function IndividualBlog(){
                          <p className="atw-summary">{a.Description}</p>
                          <p className="atw-medium">{a.Website_Name}<br /><span className="atw-dnr">{a.Date} | {a.Reading_Time} mins</span></p>
                      </div>
-                     <div className="col-5 text-center">
-                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={BASE_URL + a.Image.formats.thumbnail.url} alt="" width="90%"/></a>
+                     <div className="col-5 text-center left-padding-remover right-padding-remover">
+                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={BASE_URL + a.Image.formats.thumbnail.url} alt="" width="100%"/></a>
                      </div>
                  </div>
                 ))
@@ -92,11 +92,11 @@ function IndividualBlog(){
         </div>
         <section className="container-fluid pr-0 pt-2 pb-5 pl-0 pl-lg-4 faq-section2">
             <div className="col-12 text-center text-lg-left">
-              <span className="faq-section2-text">Did you find our blogs interesting ? </span>
+              <span className="faq-section2-text">Did you find our blogs interesting? </span>
             </div>
             
             <div className="col-12 text-center text-lg-left">
-              <span className="faq-section2-text"><a href="/contactus/#contactUsForm" style={{color: '#860000'}}>Sign Up</a> for our blog !</span>
+              <span className="faq-section2-text"><a href="/contactus/#contactUsForm" style={{color: '#860000'}}>Sign Up</a> for our blog!</span>
             </div>
            
 

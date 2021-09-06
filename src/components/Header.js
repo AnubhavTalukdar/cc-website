@@ -35,7 +35,7 @@ function Header() {
 
     return(
         <header>
-            <div className="container-fluid px-0 header">
+            <div className="container-fluid px-0 header d-lg-block d-md-block d-none">
                 <div className="row container-fluid">
                 <div className="col-12 text-right pr-1 pt-2">
                     <a className="footer-anchor" href={"mailto:"+email} target="_blank" rel="noopener noreferrer">{email}</a>
