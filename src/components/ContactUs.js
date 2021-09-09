@@ -9,6 +9,7 @@ import SpotifyIcon from "../assets/icons/spotify.png"
 import LinkedinIcon from "../assets/icons/linkedin.png"
 import { BASE_URL } from "../config/url";
 import Modal from 'react-bootstrap/Modal'
+import Spinner from 'react-bootstrap/Spinner'
 import axios from "axios"
 
 function ContactUs(){
@@ -17,6 +18,8 @@ function ContactUs(){
     const [cEmail, setCEmail] = useState("")
     const [number, setNumber] = useState("")
     const [message, setMessage] = useState("")
+    const [disp1, setDisp1] = useState("block")
+    const [disp2, setDisp2] = useState("none")
 
     const [youtube, setYoutube] = useState("")
     const [facebook, setFacebook] = useState("")
@@ -37,16 +40,34 @@ function ContactUs(){
 
     const submit = (e) => {
         e.preventDefault();
+        setDisp1("none")
+        setDisp2("block")
         axios.post(`${BASE_URL}/contact-form-responses`, {Name: name, Email: cEmail, Company : company, Contact_No : number, Message : message})
         .then(response => {
+            
+            
+        })
+        // eslint-disable-next-line
+        window.Email.send({
+            SecureToken : "c27ae495-ba3b-4e95-b9c5-e04fa40e6549",
+            To : 'dassubhra1998@gmail.com',
+            From : "dassubhra1998@gmail.com",
+            Subject : name+' tried contacting Conscious Culture',
+            // eslint-disable-next-line
+            Body : 'Name : ' + name + '<br >' + 'Phone : '+ number + '<br >' + 'Email : ' + cEmail + '<br >' + 'Company : ' + company + '<br >' + 'Message : <br>' + message
+        })
+        .then(
+          response => {
             setName("")
-            setPhone("")
             setNumber("")
             setCompany("")
             setCEmail("")
             setMessage("")
             handleShow()
-        })
+            setDisp1("block")
+            setDisp2("none")
+          }
+        );
     }
 
     useEffect(() => { 
@@ -95,7 +116,7 @@ function ContactUs(){
                 <br />
                 <textarea className="contact-us-message form-control" id="FormControlTextarea1" rows="8" placeholder="Message" value={message} onChange={(e)=>setMessage(e.target.value)} required/>
                 <br />
-                <button type="submit" className="contact-us-button float-right">Submit</button>
+                <button type="submit" className="contact-us-button float-right"><span style={{display : disp1}}>Submit</span><center className="pb-1" style={{display : disp2}}><Spinner animation="border" variant="light" size="sm" /></center></button>
                 <br />
                 <br />
                 </form>
@@ -132,12 +153,15 @@ function ContactUs(){
         
         
     </div>
-    <Modal  show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-        </Modal.Header>
+    <Modal  show={show} centered onHide={handleClose} >
+        
         <Modal.Body>
-        <div>
-            <h6>Thank you, Our team will reach out to you as soon as possible!</h6>
+        <div className="py-3">
+            <center>
+            <h6>Thank you, our team will reach out to you as soon as possible!</h6>
+         
+            <button className="btn btn-info mt-2 float-right mr-2" onClick={()=>handleClose()}>Okay</button>
+            </center>
         </div>
         </Modal.Body>
     </Modal>

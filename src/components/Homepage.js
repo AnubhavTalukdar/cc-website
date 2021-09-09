@@ -240,7 +240,7 @@ function Homepage(){
                     
                     
                 </div>
-                <div className="col-lg-5 pt-3 pl-5" id="question" style={{display : ((Cookies.get("Quiz") !== "Yes") && (Cookies.get("QuizId") !== id.toString() || Cookies.get("QuizId") === undefined)) ? "block" : "none"}}>
+                <div className="col-lg-5 pt-3 pl-5" id="question" style={{display : ((Cookies.get("QuizId") !== id.toString() || Cookies.get("QuizId") === undefined)) ? "block" : "none"}}>
                     <form onSubmit={submit}>
                     <p className="homepage-section2-question-heading">{question}</p>
                     <p className="homepage-section2-question-subheading1">{questionDesc}</p>

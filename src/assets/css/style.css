@@ -356,7 +356,7 @@
     color: #707070;
 }
 
-.accordion-button {
+.accordion-question {
     font-family: OpenSans;
     font-size: 20px;
     font-weight: normal;
@@ -385,7 +385,7 @@
     .faq-section2-text {
         font-size: 24px;
     }
-    .accordion-button {
+    .accordion-question {
         font-family: OpenSans;
         font-size: 15px;
         font-weight: normal;
@@ -1404,9 +1404,6 @@
     
 }
 
-.freeresource-img {
-    height: 200px;
-}
 
 .freeresources-card:hover {
     box-shadow: -3px 3px 28px -2px rgba(0,0,0,0.39);
@@ -1441,6 +1438,9 @@
 
   @media only screen and (min-width:601px) and (max-width: 768px)  { 
     .freeresources-card {
+        margin-left: 15px;
+     }
+     .freeresources-lastcard {
         margin-left: 15px;
      }
     }

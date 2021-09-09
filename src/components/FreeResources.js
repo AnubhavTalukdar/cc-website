@@ -7,20 +7,34 @@ import Modal from 'react-bootstrap/Modal'
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Spinner from 'react-bootstrap/Spinner'
 var arraySort = require('array-sort');
 
 function FreeResources(){
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
+    const [show3, setShow3] = useState(false);
     const [freeResources, setFreeResources] = useState([]);
     const [filteredResources, setFilteredResources] = useState([]);
     const [length, setLength] = useState(0)
     const [visible, setVisible] = useState(5)
+    const [length1, setLength1] = useState(0)
+    const [visible1, setVisible1] = useState(5)
     const [filter, setFilter] = useState("All")
     const [categories, setCategories] = useState([])
     const [fEmail, setFEmail] = useState("")
+    const [disp1, setDisp1] = useState("block")
+    const [disp2, setDisp2] = useState("none")
     const [resourceLink, setResourceLink] = useState("")
+
+    const [name, setName] = useState("")
+    const [company, setCompany] = useState("")
+    const [cEmail, setCEmail] = useState("")
+    const [number, setNumber] = useState("")
+    const [message, setMessage] = useState("")
+    const [disp3, setDisp3] = useState("block")
+    const [disp4, setDisp4] = useState("none")
 
     const blue = "-webkit-linear-gradient(70deg, #34ADFF 35%, #4CBFFF 35%)"
     const purple = "-webkit-linear-gradient(70deg, #45338F 35%, #7A69BF 35%)"
@@ -35,10 +49,17 @@ function FreeResources(){
     const handleShow1 = () => setShow1(true);
 
     const handleClose2 = () => setShow2(false);
+
+    const handleClose3 = () => setShow3(false);
+    
    
 
     const loadMore = (e) => {
         setVisible((prevValue) => prevValue + 3)
+    }
+
+    const loadMore1 = (e) => {
+        setVisible1((prevValue) => prevValue + 3)
     }
 
     const changeFilter = (e) => {
@@ -49,34 +70,40 @@ function FreeResources(){
             return fr.Category.name === s
         })
         setFilteredResources(b)
+        setLength1(b.length)
         console.log(b)
     }
 
     const requestResource = (e) => {
         e.preventDefault()
+        setDisp1("none")
+        setDisp2("block")
         window.Email.send({
             SecureToken : "c27ae495-ba3b-4e95-b9c5-e04fa40e6549",
             To : `${fEmail}`,
             From : "dassubhra1998@gmail.com",
-            Subject : "This Mail is from Concious Culture",
+            Subject : "This Mail is from Conscious Culture",
             Body : '<h4>Greetings,</h4><h4>From Conscious Culture Team!</h4> <br ><a href="'+ resourceLink +'">Click on this link to open your free resource!</a>'
         })
         .then(
           response => {
               setShow1(false);
               setShow2(true)
+              setDisp1("block")
+              setDisp2("none")
           }
         );
     }
 
     useEffect(() => { 
-        
+        window.scroll(0,0)
         axios.get(`${BASE_URL}/free-resources`)
         .then(response => {
             console.log(response.data)
             setFreeResources(arraySort(response.data, "id").reverse())
             setFilteredResources(arraySort(response.data, "id").reverse())
             setLength(response.data.length)
+            setLength1(response.data.length)
         })
 
         axios.get(`${BASE_URL}/categories`)
@@ -85,6 +112,25 @@ function FreeResources(){
         })
 
     }, [])
+
+    const submit = (e) => {
+        e.preventDefault();
+        setDisp3("none")
+        setDisp4("block")
+        axios.post(`${BASE_URL}/free-resource-requests`, {Name: name, Email: cEmail, Company : company, Phone : number, Message : message})
+        .then(response => {
+            setName("")
+            setNumber("")
+            setCompany("")
+            setCEmail("")
+            setMessage("")
+            setDisp3("block")
+            setDisp4("none")
+            setShow(false)
+            setShow3(true)
+        })
+       
+    }
 
 
     return(
@@ -136,6 +182,19 @@ function FreeResources(){
 
             ))
             }
+
+            <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none" onClick={handleShow}>
+                <div className="freeresources-lastcard mt-3 row container-fluid py-5 px-5" onClick={handleShow}>
+                    <div className="col-lg-12 text-center pl-3">
+                        <h3 style={{color : "white"}}>Send a request for other free resources</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <center>
+                <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4 mt-3" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
+            </center>
+
             </>:
             <>
             { filteredResources.slice(0,visible).map((f) => (
@@ -154,50 +213,52 @@ function FreeResources(){
 
             ))
             }
-            </>
-            }
-           
-          
-            
+
             <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none" onClick={handleShow}>
                 <div className="freeresources-lastcard mt-3 row container-fluid py-5 px-5" onClick={handleShow}>
                     <div className="col-lg-12 text-center">
                         <h3 style={{color : "white"}}>Send a request for other free resources</h3>
                     </div>
                 </div>
-            </div>           
+            </div>
+            
+            <center >
+                <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4 mt-3" onClick={loadMore1} style={{display : visible1 >= length1 || length1 <= 5 ? "none": "block"}}>Load More</button>
+            </center>
+            </>
+            }         
         </div>
        
-        <center>
-            <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
-        </center>
+        
     
         <Modal show={show} centered onHide={handleClose}>
         <Modal.Header closeButton>
            <Modal.Title>Request a Free Resource</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        <form onSubmit={submit}>
         <div className="row container-fluid justify-content-center" >
         
         <div className="row container-fluid ml-lg-5 mr-lg-4 ml-4 mr-0" style={{borderRadius : "30px", backgroundColor : "#f1f1f1"}}>
         <div className="col-lg-12 col-sm-12 col-xs-12 mt-5 mb-5 pl-2 pr-2 pl-lg-5 pr-lg-5" style={{borderRadius : "30px", backgroundColor : "white"}}>
             <br />
-            <input type="text" class="contact-us-input form-control" id="name" placeholder="Name" style={{width : "100%"}}/>
+            <input type="text" class="contact-us-input form-control" id="name" placeholder="Name" style={{width : "100%"}} value={name} onChange={(e)=>setName(e.target.value)} required/>
             <br />
-            <input type="email" class="contact-us-input form-control" id="email" placeholder="Email" style={{width : "100%"}}/>
+            <input type="email" class="contact-us-input form-control" id="email" placeholder="Email" style={{width : "100%"}} value={cEmail} onChange={(e)=>setCEmail(e.target.value)} required/>
             <br />
-            <input type="text" class="contact-us-input form-control" id="company" placeholder="Company" style={{width : "100%"}}/>
+            <input type="text" class="contact-us-input form-control" id="company" placeholder="Company" style={{width : "100%"}} value={company} onChange={(e)=>setCompany(e.target.value)} />
             <br />
-            <input type="number" class="contact-us-input form-control" id="contact" placeholder="Contact" style={{width : "100%"}}/>
+            <input type="number" class="contact-us-input form-control" id="contact" placeholder="Contact" style={{width : "100%"}} value={number} onChange={(e)=>setNumber(e.target.value)} required/>
             <br />
-            <textarea class="contact-us-message form-control" id="FormControlTextarea1" rows="3" placeholder="Message"/>
+            <textarea class="contact-us-message form-control" id="FormControlTextarea1" rows="3" placeholder="Message" value={message} onChange={(e)=>setMessage(e.target.value)} required/>
             <br />
-            <button className="contact-us-button float-right">Submit</button>
+            <button className="contact-us-button float-right"><span style={{display : disp3}}>Submit</span><center className="pb-1" style={{display : disp4}}><Spinner animation="border" variant="light" size="sm" /></center></button>
             <br />
             <br />
         </div>
         </div>
         </div>
+        </form>
         </Modal.Body>
       </Modal>
       <Modal show={show1} centered onHide={handleClose1}>
@@ -215,7 +276,7 @@ function FreeResources(){
                 </div>
                 <div className="col-lg-4 col-6">
                     <br />
-                    <button type="submit" className="contact-us-button mt-1">Submit</button>
+                    <button type="submit" className="contact-us-button mt-1"><span style={{display : disp1}}>Submit</span><center className="pb-1" style={{display : disp2}}><Spinner animation="border" variant="light" size="sm" /></center></button>
                 </div>
                 
             </div>
@@ -229,6 +290,17 @@ function FreeResources(){
             <h6>Please check your inbox for your Free Resource!</h6>
          
             <button className="btn btn-info mt-2 float-right mr-3" onClick={()=>handleClose2()}>Okay</button>
+            </center>
+        </div>
+        </Modal.Body>
+      </Modal>
+      <Modal show={show3} centered onHide={handleClose3}>
+        <Modal.Body>
+        <div className="py-3">
+            <center>
+            <h6>Thank you, our team will reach out to you as soon as possible!</h6>
+         
+            <button className="btn btn-info mt-2 float-right mr-3" onClick={()=>handleClose3()}>Okay</button>
             </center>
         </div>
         </Modal.Body>
