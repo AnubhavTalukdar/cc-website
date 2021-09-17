@@ -111,9 +111,9 @@ function Blogs(){
         <div className="row pl-lg-5 pl-md-5 pr-lg-5 pl-3 pr-0 container-fluid">
             <div className="col-lg-7 col-sm-12 pl-lg-5 pl-none">
                 <div className="row">
-                    <h1 className="our-blogs-heading2 pl-5">Our Blogs</h1>
+                    <h1 className="our-blogs-heading2 pl-lg-3 pl-4">Our Blogs</h1>
         
-                    <div className="row mt-3 pl-5 pb-3">
+                    <div className="row mt-2 pl-md-4 pl-5 pb-4">
                         <div className="col-lg-4 col-sm-none">
 
                         </div>
@@ -155,7 +155,8 @@ function Blogs(){
                     { 
                     blogs.slice(0,visible).map((b) =>(
                         
-                        <div className="row pl-5 pb-3">
+                        <div className="row pl-3 pb-3 ml-lg-2 ml-md-0 ml-1 mb-3">
+                            <a className="row blog-cards" href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
                             <div className="col-lg-6 col-md-6 col-sm-12">
                                 <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>  <img className="blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt=""/> </a>
                             </div>
@@ -167,6 +168,7 @@ function Blogs(){
                                 <p className="blog-summary">{b.Summary} </p>
                                 <p className="blog-author">{b.Author}<br /><span className="highlight-designation">{b.Author_Designation}</span></p>
                             </div>
+                            </a>
                         </div>
                     ))
                     
@@ -193,7 +195,8 @@ function Blogs(){
                     { 
                     filteredBlogs.slice(0,visible).map((b) =>(
                         
-                        <div className="row pl-5 pb-3">
+                        <div className="row pl-3 pb-3 ml-lg-2 ml-md-0 ml-1 mb-3">
+                            <a className="row blog-cards" href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
                             <div className="col-lg-6 col-md-6 col-sm-12">
                                 <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>  <img className="blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt=""/> </a>
                             </div>
@@ -205,6 +208,7 @@ function Blogs(){
                                 <p className="blog-summary">{b.Summary} </p>
                                 <p className="blog-author">{b.Author}<br /><span className="highlight-designation">{b.Author_Designation}</span></p>
                             </div>
+                            </a>
                         </div>
                     ))
                     
@@ -220,13 +224,14 @@ function Blogs(){
                 </div>
                 
             </div>
-            <div className="col-lg-5 col-sm-12 pl-5 mt-5 mt-lg-0">
+            <div className="col-lg-5 col-sm-12 pl-md-4 pl-5 mt-5 mt-lg-0">
                 <div className="row">
                 <h2 className="our-blogs-heading2-small pl-lg-5 pl-none">THIS WEEK</h2>
                 <h2 className="our-blogs-heading1 pl-lg-5 pl-none">Around the web</h2>
                 <h2 className="our-blogs-heading2-last pl-lg-5 pl-none pb-lg-4 pb-3">A curated list of articles from around the web, that drew our attention this week.</h2>
                 { aroundTheWebs.slice(0,visible1).map((a)=>(
                      <div className="row pl-lg-5 pl-none pb-3">
+                     <a className="row atw-cards ml-lg-3 ml-md-0 ml-2" href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
                      <div className="col-7">
                          <p className="atw-heading"><a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>{a.Title} </a></p>
                          <p className="atw-summary">{a.Description}</p>
@@ -235,23 +240,25 @@ function Blogs(){
                      <div className="col-5 text-center left-padding-remover right-padding-remover">
                      <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={BASE_URL + a.Image.formats.thumbnail.url} alt="" width="100%"/></a>
                      </div>
+                     </a>
                  </div>
                 ))
                 }
                 <br />
                 <center>
-                    <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4" onClick={loadMore1} style={{display : visible1 >= length1 || length1 <= 5 ? "none": "block"}}>Load More</button>
+                    <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4 ml-lg-5 ml-0" onClick={loadMore1} style={{display : visible1 >= length1 || length1 <= 5 ? "none": "block"}}>Load More</button>
                 </center>
                 
-                <a href="/" style={{textDecoration : "none"}}>
+                <a className="ml-lg-3 ml-0" href="/" style={{textDecoration : "none"}}>
                 <div className="row first-card mb-3">
                     <p className="first-card-heading pt-4">Have something to share? <br />Get in touch! <p className="first-card-summary pt-3">We would love to hear your story. </p></p>
                     
                 </div>
                 </a>
-                <a href="/" style={{textDecoration : "none"}}>
+                
+                <a className="ml-lg-3 ml-0" href="/" style={{textDecoration : "none"}}>
                 <div className="row second-card mb-4">
-                    <p className="second-card-heading pt-4">Sign up!<p className="second-card-summary pt-3">For our blogs</p></p>
+                    <p className="second-card-heading pt-4">Products Services!<p className="second-card-summary pt-3">For our blogs</p></p>
                     
                 </div>
                 </a>

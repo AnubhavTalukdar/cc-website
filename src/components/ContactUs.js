@@ -71,6 +71,7 @@ function ContactUs(){
     }
 
     useEffect(() => { 
+        window.scroll(0,0)
         axios.get(`${BASE_URL}/contact-details/1`)
         .then(response => {
             setYoutube(response.data.Youtube)
@@ -100,7 +101,7 @@ function ContactUs(){
         </div >
     </div>
     <br id="contactUsForm"/>
-    <div className="row container-fluid pb-5 justify-content-center" >
+    <div className="row container-fluid pb-5 justify-content-center px-lg-5 px-3" >
             
             <div className="row container-fluid ml-lg-5 mr-lg-4 ml-4 mr-0" style={{borderRadius : "30px", backgroundColor : "#f1f1f1"}}>
             <div className="col-lg-7 col-sm-12 col-xs-12 mt-5 mb-5 pl-2 pr-2 pl-lg-5 pr-lg-5" style={{borderRadius : "30px", backgroundColor : "white"}}>

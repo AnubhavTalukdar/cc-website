@@ -1,11 +1,11 @@
 /* jsx-a11y/iframe-has-title */
 import React, {useState, useEffect} from "react";
-import Ashoka from "../assets/img/ashoka.png"
-import Welham from "../assets/img/welham.png"
-import Trucup from "../assets/img/trucup.png"
-import Nipman from "../assets/img/nipman.png"
+import Carousel1 from "react-elastic-carousel"
 import Card1 from "../assets/img/card1.jpg"
 import Card2 from "../assets/img/card2.jpg"
+import C1 from "../assets/img/c1.JPG"
+import C2 from "../assets/img/c2.JPG"
+import C3 from "../assets/img/c3.JPG"
 import SideArrow from "../assets/img/sidearrow.PNG"
 import HomepagePicture from "../assets/img/HomepagePicture.jpg"
 import HomepagePicture1 from "../assets/img/HomepagePicture1.jpg"
@@ -20,6 +20,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import Cookies from 'js-cookie'
 import {Link} from "@reach/router"
 import Carousel from 'react-bootstrap/Carousel'
+import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
 var arraySort = require('array-sort');
 
 const useStyles = makeStyles((theme) => ({
@@ -63,8 +65,23 @@ function Homepage(){
     const [outputD, setOutputD] = useState(0)
     const [formTitle, setFormTitle] = useState("")
     const [formLink, setFormLink] = useState("")
+    const [card1head, setCard1head] = useState("")
+    const [card2head, setCard2head] = useState("")
+    const [card3head, setCard3head] = useState("")
+    const [card1desc, setCard1desc] = useState("")
+    const [card2desc, setCard2desc] = useState("")
+    const [card3desc, setCard3desc] = useState("")
+
+    const [clients, setClients] = useState([])
 
     const Total = outputA + outputB + outputC + outputD
+
+    const breakPoints = [
+        { width: 1, itemsToShow: 1,itemsToScroll: 1 },
+        { width: 350, itemsToShow: 2,itemsToScroll: 2 },
+        { width: 768, itemsToShow: 4,itemsToScroll: 4 },
+        { width: 1200, itemsToShow: 4,itemsToScroll: 4 },
+      ];
 
     const submit = (e) => {
         e.preventDefault()
@@ -159,6 +176,22 @@ function Homepage(){
             setOutputD(quizs[quizs.length -1].Response_D)
         })
 
+        axios.get(`${BASE_URL}/website-texts`)
+        .then(response =>{
+            setCard1head(response.data.Card1_Heading)
+            setCard2head(response.data.Card2_Heading)
+            setCard3head(response.data.Card3_Heading)
+            setCard1desc(response.data.Card1_Desc)
+            setCard2desc(response.data.Card2_Desc)
+            setCard3desc(response.data.Card3_Desc)
+            
+        })
+
+        axios.get(`${BASE_URL}/our-clients`)
+        .then(response => {
+            setClients(arraySort(response.data, "id"))
+        })
+
     }, [])
 
     let last = blogs.slice(-1)
@@ -195,35 +228,44 @@ function Homepage(){
         </div>  
         <div className="homepage-section1 container-fluid px-0">
             <Carousel>
-                <Carousel.Item interval={4000}><img src={HomepagePicture2} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
-                <Carousel.Item interval={4000}><img src={HomepagePicture1} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
                 <Carousel.Item interval={4000}><img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
+                <Carousel.Item interval={4000}><img src={HomepagePicture1} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
+                <Carousel.Item interval={4000}><img src={HomepagePicture2} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
             </Carousel>
         
         </div>
         
-        <div className="homepage-section2 container-fluid px-0 mt-lg-5 mt-md-5 mt-3">
+        <div className="homepage-section2 container-fluid px-0 mt-lg-5 mt-md-5 mt-3 px-lg-3 px-none">
+            
             <div className="row container-fluid right-padding-remover">
-                <div className="col-lg-7 right-padding-remover pt-3">
+                <div className="col-lg-7 pl-md-5 pl-0 right-padding-remover pt-3">
                     { last.map((b) =>(
-                        <div className="row pl-5 container-fluid">
+                        <div className="row pl-5 container-fluid highlight-padding-remover mb-3">
                         
-                        <div className="col-lg-12 col-sm-12 pl-md-0 pl-0 pt-3 pt-lg-0 pb-0 pb-lg-4">
-                           <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-highlight-heading">{b.Title}</p></a>
+                        <div className="col-lg-12 col-md-12 col-sm-6 pl-md-0 pl-0 pt-3 pt-lg-0 pb-0 pb-lg-2">
+                        <a className="row highlight-cards" href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
+                            <div className="col-lg-12 col-4 d-lg-none d-block thumbnail-margin-remover">
+                                <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img className="homepage-section2-blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt="blog-img"/></a>
+                            </div>
+                            <div className="col-lg-12 col-8">
+                            <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-highlight-heading">{b.Title}</p></a>
 
-                           <p className="homepage-section2-highlight-read">{b.Summary}</p>
+                            <p className="homepage-section2-highlight-read">{b.Summary}</p>
 
-                           <p className="homepage-section2-highlight-author">{b.Author} <br/><p className="homepage-section2-highlight-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</p></p>
-                        </div> 
+                            <p className="homepage-section2-highlight-author">{b.Author} <br/><p className="homepage-section2-highlight-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</p></p>
+                            </div>
+                        </a>
+                        </div>
+                        
         
                         </div>
 
                     ))}
                     
-                    <div className="row pl-5 container-fluid">
+                    <div className="row pl-3 container-fluid highlight-padding-remover">
                     {lastf.slice(1,5).map((b) =>(
-                        <div className="col-lg-6 pt-2 col-sm-12 px-0">
-                        <div className="row px-0">
+                        <div className="col-lg-6 pt-2 mb-3 col-sm-12 ">
+                        <a className="row ml-1 highlight-cards" href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
                         <div className="col-4 thumbnail-margin-remover">
                             <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img className="homepage-section2-blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt="blog-img"/></a>
                         </div>
@@ -232,7 +274,7 @@ function Homepage(){
                             <p className="homepage-section2-blog-subheading">{b.Summary}</p>
                             <p className="homepage-section2-blog-author">{b.Author}<br /><span className="homepage-section2-blog-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</span></p>
                         </div>
-                        </div>
+                        </a>
                     </div>
 
                     ))}
@@ -365,17 +407,35 @@ function Homepage(){
                     <p className="hompage-section3-subheading1 pl-4">We all wear several hats. <br /><span className="hompage-section3-subheading2">Choose the capacity in which you are visiting us:</span></p> 
                 </div>
             </div>
-            <div className="row container-fluid pl-5 pr-lg-3 pr-none mt-3 homepage-section3-cards">
+            <div className="row container-fluid homepage-section3-padding pr-lg-0 pr-none mt-3 homepage-section3-cards">
                 <div className="col-lg-4 col-sm-12 mt-lg-5 mt-3">
-                    <div className="homepage-section3-card" />
+                    <div className="homepage-section3-card">
+                        <img src={C1} className="c1-img" alt="C1" />
+                        <center>
+                            <h4 className="homepage-section3-card-heading pt-1">{card1head}</h4>
+                        </center>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card1desc}</ReactMarkdown></p>
+                    </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
                 <div className="col-lg-4 col-sm-12 mt-5">
-                    <div className="homepage-section3-card" />
+                    <div className="homepage-section3-card">
+                        <img src={C2} className="c2-img" alt="C2" />
+                        <center>
+                            <h4 className="homepage-section3-card-heading">{card2head}</h4>
+                        </center>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card2desc}</ReactMarkdown></p>
+                    </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
                 <div className="col-lg-4 col-sm-12 mt-5">
-                    <div className="homepage-section3-card" />
+                    <div className="homepage-section3-card">
+                        <img src={C3} className="c3-img" alt="C3" />
+                        <center>
+                            <h4 className="homepage-section3-card-heading">{card3head}</h4>
+                        </center>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card3desc}</ReactMarkdown></p>
+                    </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
             </div>
@@ -395,10 +455,17 @@ function Homepage(){
         <br />
         <div className="row container-fluid homepage-section4-row pl-5">
 
-            <div className="col-lg-5 col-sm-12 pl-lg-5 pl-none">
+            <div className="col-lg-5 col-sm-12 pl-lg-5 pl-none pb-lg-0 pb-4">
                 <p className="homepage-section4-text1">"Our team at Trucup found CIELead Untapped analysis report highly useful. After having gone through many psychometric tests in my professional career, I thought I had a good understanding of my unconscious bias. However, Untapped brought a lot of internalized opinions to the surface. The tools provided by CIELead helped us design a better communication strategy to reach out to diverse customer segments."</p>
                 <p className="homepage-section4-text2">Alakshi Tomar <br /><span className="homepage-section4-text3">Cofounder, TruCup</span></p>
-                <p className="text-center"><img src={Ashoka} alt="ashoka-img" width="52px" height="61px"/> <img src={Welham} alt="welham-img" width="119px" height="61px"/> <img src={Trucup} alt="trucup-img" width="96px" height="96px"/> <img src={Nipman} alt="nipman-img" width="61px" height="61px" style={{backgroundColor : "#707070"}}/></p>
+                <Carousel1 breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={3000}>
+                { 
+                clients.map((c)=>(
+                    <div className="homepage-logo-slides text-center">
+                            <img src={BASE_URL + c.Image.url} alt="logo-img" height="70%" />
+                    </div>
+                ))}
+                </Carousel1>
                 
             </div>
             <div className="col-lg-7 col-sm-12 pl-lg-5 pl-none d-flex justify-content-center">

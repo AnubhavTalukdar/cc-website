@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "@reach/router";
 import { BASE_URL } from "../config/url";
+import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
 import axios from "axios"
 
 function IndividualBlog(){
@@ -47,7 +49,7 @@ function IndividualBlog(){
     return(
         <>
         <div className="row container-fluid pt-4 pb-lg-5 pl-none pb-3 custom-blog-padding">
-            <div className="col-lg-8 col-sm-12 pl-lg-5 pl-none">
+            <div className="col-lg-8 col-sm-12 pl-lg-5 pl-md-5 pl-none mt-5 mt-lg-none">
                 <h4 className="individual-blog-heading">{title}</h4>
                 <br />
                 <div className="text-center">
@@ -55,7 +57,7 @@ function IndividualBlog(){
                 </div>
                 <br />
                 <br />
-                <p className="individual-blog-description">{desc}</p>
+                <p className="individual-blog-description"> <ReactMarkdown remarkPlugins={[gfm]}>{desc}</ReactMarkdown></p>
                 <br />
                 <h4 className="individual-blog-author">{author}</h4>
                 <h4 className="individual-blog-designation">{authorDesg}</h4>
@@ -64,7 +66,7 @@ function IndividualBlog(){
 
             </div>
            
-            <div className="col-lg-4 col-sm-12 pl-lg-5 pl-none mt-5 mt-lg-none">
+            <div className="col-lg-4 col-sm-12 pl-lg-5 pl-md-5 pl-none mt-5 mt-lg-none">
                 <div className="row">
                 
                 <h2 className="our-blogs-heading2-small pl-lg-5 pl-none">THIS WEEK</h2>
@@ -72,6 +74,8 @@ function IndividualBlog(){
                 <h2 className="our-blogs-heading2-last pl-lg-5 pl-none pb-lg-4 pb-3">A curated list of articles from around the web, that drew our attention this week.</h2>
                 { aroundTheWebs.slice(0,visible).map((a)=>(
                      <div className="row pl-lg-5 pl-none pb-3">
+                    
+                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}} className="row atw-cards ml-lg-3 ml-3">
                      <div className="col-7">
                          <p className="atw-heading"><a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>{a.Title} </a></p>
                          <p className="atw-summary">{a.Description}</p>
@@ -80,12 +84,14 @@ function IndividualBlog(){
                      <div className="col-5 text-center left-padding-remover right-padding-remover">
                      <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={BASE_URL + a.Image.formats.thumbnail.url} alt="" width="100%"/></a>
                      </div>
+                     </a>
+                    
                  </div>
                 ))
                 }
                 <br />
                 <center>
-                    <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
+                    <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4 ml-lg-5 ml-0" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
                 </center>
                 </div>
             </div>

@@ -2,24 +2,24 @@ import React , {useEffect, useState} from "react"
 import products from "../assets/img/products.png"
 import products2 from "../assets/img/Product2.png"
 import Carousel from "react-elastic-carousel"
-import Ashoka from "../assets/img/ashoka.png"
-import Welham from "../assets/img/welham.png"
-import Trucup from "../assets/img/trucup.png"
-import Nipman from "../assets/img/nipman.png"
 import axios from "axios"
 import { BASE_URL } from "../config/url";
+var arraySort = require('array-sort');
 
 
 function Products(){
     const breakPoints = [
         { width: 1, itemsToShow: 1,itemsToScroll: 1 },
-        { width: 550, itemsToShow: 4,itemsToScroll: 4 },
+        { width: 550, itemsToShow: 2,itemsToScroll: 2 },
         { width: 768, itemsToShow: 4,itemsToScroll: 4 },
-        { width: 1400, itemsToShow: 4,itemsToScroll: 4 },
+        { width: 1200, itemsToShow: 4,itemsToScroll: 4 },
       ];
     
     const [offerings, setOfferings] = useState([])
     const [length, setLength] = useState("")
+    const [facts1, setFacts1] = useState("")
+    const [facts2, setFacts2] = useState("")
+    const [clients, setClients] = useState([])
 
       useEffect(() => { 
         window.scroll(0,0)
@@ -29,6 +29,18 @@ function Products(){
             setOfferings(response.data)
             setLength(response.data.length)
         })
+
+        axios.get(`${BASE_URL}/website-texts`)
+        .then(response => {
+            setFacts1(response.data.Facts1)
+            setFacts2(response.data.Facts2)
+        })
+
+        axios.get(`${BASE_URL}/our-clients`)
+        .then(response => {
+            setClients(arraySort(response.data, "id"))
+        })
+
     }, [])
 
 
@@ -49,16 +61,14 @@ function Products(){
                 <div className="row pt-2 products-section2-row container-fluid">
                     <div className="col-12">
                         <p className="products-section2-text1 text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt qui.
+                        {facts1}
                         </p>
                     </div>
                 </div>
                 <div className="row products-section2-row container-fluid">
                     <div className="col-lg-9">
                         <p className="products-section2-text1 text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est, sunt in culpa qui officia deserunt mollit.   
+                        {facts2}  
                         </p>
                     </div>
                     <div className="col-lg-3">
@@ -155,10 +165,12 @@ function Products(){
             <br />
             <br />
                 <Carousel breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={3000}>
-                <div className="logo-slides-text"><img src={Ashoka} alt="logo-img" width="52px" height="61px"/></div>
-                <div className="logo-slides"><img src={Welham} alt="logo-img" width="119px" height="61px"/></div>
-                <div className="logo-slides"><img src={Trucup} alt="logo-img" width="96px" height="96px"/></div>
-                <div className="logo-slides bg-dark"><img src={Nipman} alt="logo-img" width="61px" height="61px"/></div>
+                { 
+                clients.map((c)=>(
+                    <div className="logo-slides text-center">
+                            <img src={BASE_URL + c.Image.url} alt="logo-img" height="70%" />
+                    </div>
+                ))}
                 </Carousel>
                 
             
