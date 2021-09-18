@@ -86,13 +86,13 @@ function AboutUs(){
                 
                 <div className="col-lg-6 col-sm-12 mt-lg-0 mt-3">
                     <h5 className="text-center" style={{color: '#860000'}}>Our Mission</h5>
-                    <p className="about-section3-text text-justify">
+                    <p className="about-section3-text text-justify" >
                     {mission}    
                     </p>
                 </div>
             </div>
-           <div className="about-section4 container-fluid pt-5 pb-5">
-           <h1 className="about-section4-heading text-center">The Team</h1>
+           <div className="about-section4 container-fluid pt-5 pb-5" >
+           <h1 className="about-section4-heading text-center" id="team">The Team</h1>
            <br />
                 <center>
                 <Carousel className="team" breakPoints={breakPoints}>

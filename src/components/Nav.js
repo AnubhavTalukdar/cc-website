@@ -2,6 +2,7 @@
 import React from "react";
 import logo from "./../assets/img/logo.png"
 import {Link} from "@reach/router"
+import Cookies from 'js-cookie'
 
 function Nav() {
     return(
@@ -28,7 +29,7 @@ function Nav() {
                 <Link className="nav-link" to="/blogs">Blog</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/freeresources">Free Resources</Link>
+                <Link className="nav-link" to="/freeresources" onClick={()=>Cookies.set("Category","All")}>Free Resources</Link>
               </li>
               <li className="nav-item ">
                 <Link className="nav-link" to="/faq">FAQ</Link>

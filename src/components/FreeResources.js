@@ -8,6 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Spinner from 'react-bootstrap/Spinner'
+import Cookies from 'js-cookie'
 var arraySort = require('array-sort');
 
 function FreeResources(){
@@ -21,7 +22,7 @@ function FreeResources(){
     const [visible, setVisible] = useState(5)
     const [length1, setLength1] = useState(0)
     const [visible1, setVisible1] = useState(5)
-    const [filter, setFilter] = useState("All")
+    const [filter, setFilter] = useState(Cookies.get("Category"))
     const [categories, setCategories] = useState([])
     const [fEmail, setFEmail] = useState("")
     const [disp1, setDisp1] = useState("block")
@@ -71,8 +72,8 @@ function FreeResources(){
         })
         setFilteredResources(b)
         setLength1(b.length)
-        console.log(b)
     }
+    
 
     const requestResource = (e) => {
         e.preventDefault()
@@ -99,18 +100,31 @@ function FreeResources(){
         window.scroll(0,0)
         axios.get(`${BASE_URL}/free-resources`)
         .then(response => {
-            console.log(response.data)
-            setFreeResources(arraySort(response.data, "id").reverse())
-            setFilteredResources(arraySort(response.data, "id").reverse())
-            setLength(response.data.length)
-            setLength1(response.data.length)
+            if(filter === "All"){
+                setFreeResources(arraySort(response.data, "id").reverse())
+                setFilteredResources(arraySort(response.data, "id").reverse())
+                setLength(response.data.length)
+                setLength1(response.data.length)
+            }
+            else {
+                setFreeResources(arraySort(response.data, "id").reverse())
+                setLength(response.data.length)
+
+                var f = arraySort(response.data, "id").reverse()
+                var b = []
+                b = f.filter(function(fr){
+                    return fr.Category.name === filter
+                })
+                setFilteredResources(b)
+                setLength1(b.length)
+            }
         })
 
         axios.get(`${BASE_URL}/categories`)
         .then(response => {
             setCategories(response.data)
         })
-
+    // eslint-disable-next-line
     }, [])
 
     const submit = (e) => {

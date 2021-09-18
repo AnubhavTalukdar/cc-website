@@ -18,7 +18,7 @@ import { BASE_URL } from "../config/url";
 import axios from "axios"
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Cookies from 'js-cookie'
-import {Link} from "@reach/router"
+import {Link, navigate} from "@reach/router"
 import Carousel from 'react-bootstrap/Carousel'
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
@@ -132,6 +132,40 @@ function Homepage(){
 
     const [blogs, setBlogs] = useState([])
 
+    const changeLooking = (e) => {
+        const value = e.target.value;
+        if(value === "1"){
+            Cookies.set("Category","Individual")
+            navigate("/freeresources")
+            
+        }
+        else if(value === "2"){
+            Cookies.set("Category","Teams")
+            navigate("/freeresources")
+            
+        }
+        else if(value === "3"){
+            Cookies.set("Category","Organisations")
+            navigate("/freeresources")
+        }
+        else if(value === "4"){
+            window.location.href = "/products/#product"
+        }
+        else if(value === "5"){
+            window.location.href = "/products/#product"
+        }
+        else if(value === "6"){
+            window.location.href = "/products/#product"
+        }
+        else if(value === "7"){
+            window.location.href = "/contactus/#contactUsForm"
+        }
+        else if(value === "8"){
+            window.location.href = "/about/#team"
+        }
+       
+    }
+
     useEffect(() => { 
         window.scroll(0,0)
         axios.get(`${BASE_URL}/blogs`)
@@ -228,9 +262,25 @@ function Homepage(){
         </div>  
         <div className="homepage-section1 container-fluid px-0">
             <Carousel>
-                <Carousel.Item interval={4000}><img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
-                <Carousel.Item interval={4000}><img src={HomepagePicture1} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
-                <Carousel.Item interval={4000}><img src={HomepagePicture2} className="carousel-img d-block w-100" alt="carousel-img-2" /></Carousel.Item>
+                <Carousel.Item interval={4000}><img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" />
+                <div className="img-writeup1"><h4 className="img-writeup-text">Create a culture where</h4></div><br />
+                <div className="img-writeup2"><h4 className="img-writeup-text">diversity thrives</h4></div>
+                <div className="img-writeup3">
+                <select className="form-select homepage-select" onChange={changeLooking}>
+                    <option value="" selected disabled>I am looking for...</option>
+                    <option value="1" >Free DEI resources for individuals</option>
+                    <option value="2">Free DEI resources for team leaders</option>
+                    <option value="3">Free DEI resources for organisations</option>
+                    <option value="4">Services to review your organisation culture</option>
+                    <option value="5">Sessions to build awareness</option>
+                    <option value="6">Learning and development training</option>
+                    <option value="7">Have an idea ?</option>
+                    <option value="8">Passionate about DEI, want to join the community ? </option>
+                </select>
+                </div>
+                </Carousel.Item>
+                <Carousel.Item interval={4000}><img src={HomepagePicture1} className="carousel-img d-block w-100" alt="carousel-img-2" /><div className="img-writeup1" style={{display: 'none'}}><h4 className="img-writeup-text">Create a culture where</h4></div><br /><div className="img-writeup2" style={{display: 'none'}}><h4 className="img-writeup-text">diversity thrives</h4></div></Carousel.Item>
+                <Carousel.Item interval={4000}><img src={HomepagePicture2} className="carousel-img d-block w-100" alt="carousel-img-2" /><div className="img-writeup1" style={{display: 'none'}}><h4 className="img-writeup-text">Create a culture where</h4></div><br /><div className="img-writeup2" style={{display: 'none'}}><h4 className="img-writeup-text">diversity thrives</h4></div></Carousel.Item>
             </Carousel>
         
         </div>

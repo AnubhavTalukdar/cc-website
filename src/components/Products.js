@@ -20,7 +20,8 @@ function Products(){
     const [facts1, setFacts1] = useState("")
     const [facts2, setFacts2] = useState("")
     const [clients, setClients] = useState([])
-
+    
+    
       useEffect(() => { 
         window.scroll(0,0)
 
@@ -40,6 +41,7 @@ function Products(){
         .then(response => {
             setClients(arraySort(response.data, "id"))
         })
+
 
     }, [])
 
@@ -79,7 +81,7 @@ function Products(){
             <div className="products-section3 container-fluid pt-5 pb-5">
                 <h1 className="products-section3-heading text-center">Our Offerings</h1>
                 <br />
-                <br />
+                <br id="product"/>
                 { offerings.map((o,index) =>(
                     <>
                     
@@ -87,7 +89,7 @@ function Products(){
                     <>
                     <div className="products-section3-row row container-fluid">
                     <div className="col-lg-6 col-sm-12 mt-lg-0 mt-5">
-                        <img className="rounded products-section3-img " src={BASE_URL + o.Image.url} alt="product-service1" width="100%"/>
+                        <img className="rounded products-section3-img " src={BASE_URL + o.Image.url} alt="product-service1" width="100%" />
                     </div>
                     <div className="col-lg-6 col-sm-12 mt-lg-0 mt-5">
                         <h1 className="products-section3-subheading">{o.Heading}</h1>
@@ -108,6 +110,8 @@ function Products(){
                         </div>
                         </div>
                         </div>
+                       
+                        
                     </div>
                     <div className="products-section3-row row container-fluid d-none d-lg-block">
                         {/*eslint-disable-next-line */}
@@ -145,6 +149,7 @@ function Products(){
                     <div className="col-lg-6 col-sm-12 mt-lg-0 mt-5 d-lg-block d-none">
                         <img className="rounded products-section3-img " src={BASE_URL + o.Image.url} alt="product-service3" width="100%"/>
                     </div>
+                    <span></span>
                     </div>
                     <div className="products-section3-row row container-fluid d-none d-lg-block" >
                         {/*eslint-disable-next-line */}
