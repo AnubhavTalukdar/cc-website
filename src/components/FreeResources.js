@@ -188,8 +188,8 @@ function FreeResources(){
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-12 mt-lg-0 mt-3">
                         <h5 style={{color : "white"}}>{f.Title}</h5>
-                        <h6 className="mt-4" style={{color : "white"}}>Category : {f.Category.name}</h6>
-                        <p className="mt-4" style={{color : "white"}}>{f.Description}</p>
+                        <h6 className="mt-4" style={{color : "white"}}>Category: <em>{f.Category.name}</em></h6>
+                        <p className="mt-4" style={{color : "white"}}><em>{f.Description}</em></p>
                     </div>
                 </div>
             </div>
@@ -199,8 +199,8 @@ function FreeResources(){
 
             <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none" onClick={handleShow}>
                 <div className="freeresources-lastcard mt-3 row container-fluid py-5 px-5" onClick={handleShow}>
-                    <div className="col-lg-12 text-center pl-3">
-                        <h3 style={{color : "white"}}>Send a request for other free resources</h3>
+                    <div className="col-lg-12 mt-auto mb-auto text-center pl-3">
+                        <h5 style={{color : "white"}}>Send a request for other free resources.</h5>
                     </div>
                 </div>
             </div>
@@ -219,8 +219,8 @@ function FreeResources(){
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-12 mt-lg-0 mt-3">
                         <h5 style={{color : "white"}}>{f.Title}</h5>
-                        <h6 className="mt-4" style={{color : "white"}}>Category : {f.Category.name}</h6>
-                        <p className="mt-4" style={{color : "white"}}>{f.Description}</p>
+                        <h6 className="mt-4" style={{color : "white"}}>Category : <em>{f.Category.name}</em></h6>
+                        <p className="mt-4" style={{color : "white"}}><em>{f.Description}</em></p>
                     </div>
                 </div>
             </div>
@@ -230,8 +230,8 @@ function FreeResources(){
 
             <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none" onClick={handleShow}>
                 <div className="freeresources-lastcard mt-3 row container-fluid py-5 px-5" onClick={handleShow}>
-                    <div className="col-lg-12 text-center">
-                        <h3 style={{color : "white"}}>Send a request for other free resources</h3>
+                    <div className="col-lg-12 mt-auto mb-auto text-center">
+                        <h5 style={{color : "white"}}>Send a request for other free resources.</h5>
                     </div>
                 </div>
             </div>

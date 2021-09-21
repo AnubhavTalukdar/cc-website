@@ -20,6 +20,7 @@ function Products(){
     const [facts1, setFacts1] = useState("")
     const [facts2, setFacts2] = useState("")
     const [clients, setClients] = useState([])
+    const [freeconsult, setFreeconsult] = useState("")
     
     
       useEffect(() => { 
@@ -40,6 +41,11 @@ function Products(){
         axios.get(`${BASE_URL}/our-clients`)
         .then(response => {
             setClients(arraySort(response.data, "id"))
+        })
+
+        axios.get(`${BASE_URL}/website-texts`)
+        .then(response => {
+            setFreeconsult(response.data.Free_Consult)
         })
 
 
@@ -96,7 +102,7 @@ function Products(){
                         <p className="products-section3-desc mt-4 mt-lg-5">
                         {o.Description}
                         </p>
-                        <button className="mt-4 mt-lg-5 btn btn-info">Free Consult</button>
+                        <a href={freeconsult} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><button className="mt-4 mt-lg-5 btn btn-info">Free Consult</button></a>
                         <p className="products-section3-test mt-4 mt-lg-5">
                         {o.Testimonial}
                         </p>
@@ -132,7 +138,7 @@ function Products(){
                         <p className="products-section3-desc mt-4 mt-lg-5">
                         {o.Description}
                         </p>
-                        <button className="mt-4 mt-lg-5 btn btn-info">Free Consult</button>
+                        <a href={freeconsult} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><button className="mt-4 mt-lg-5 btn btn-info">Free Consult</button></a>
                         <p className="products-section3-test mt-4 mt-lg-5">
                         {o.Testimonial}
                         </p>
@@ -169,7 +175,7 @@ function Products(){
             <h1 className="products-section4-heading text-center">Our Clients</h1>
             <br />
             <br />
-                <Carousel breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={3000}>
+                <Carousel breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={15000}>
                 { 
                 clients.map((c)=>(
                     <div className="logo-slides text-center">

@@ -88,7 +88,7 @@ function Homepage(){
         if(optionC === "" && optionD === ""){
             axios.put(`${BASE_URL}/home-page-quizs/${id}`, {Response_A: responseA+op1, Response_B: responseB+op2})
             .then(response => {
-                console.log(response)
+               
 
                 setOutputA(response.data.Response_A)
                 setOutputB(response.data.Response_B)
@@ -106,7 +106,7 @@ function Homepage(){
         else{
             axios.put(`${BASE_URL}/home-page-quizs/${id}`, {Response_A: responseA+op1, Response_B: responseB+op2, Response_C: responseC+op3, Response_D: responseD+op4})
             .then(response => {
-                console.log(response)
+               
 
                 setOutputA(response.data.Response_A)
                 setOutputB(response.data.Response_B)

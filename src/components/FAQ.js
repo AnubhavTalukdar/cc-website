@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect} from "react";
 import Tab from 'react-bootstrap/Tab'
 import Nav from 'react-bootstrap/Nav'
 import Row from 'react-bootstrap/Row'
@@ -47,6 +47,11 @@ function FAQ(){
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  useEffect(() => { 
+    window.scroll(0,0)
+
+}, [])
 
 
     return(

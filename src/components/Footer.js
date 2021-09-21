@@ -9,6 +9,7 @@ import YoutubeIcon from "../assets/icons/youtube.png"
 import SpotifyIcon from "../assets/icons/spotify.png"
 import LinkedinIcon from "../assets/icons/linkedin.png"
 import { BASE_URL } from "../config/url";
+import Tooltip from '@material-ui/core/Tooltip';
 import axios from "axios"
 
 function Footer(){
@@ -60,24 +61,50 @@ function Footer(){
                 <p className="footer-column3-text">Or write to us at <br/><a className="footer-anchor" href={"mailto:"+email} target="_blank" rel="noopener noreferrer">{email}</a></p>
                 <div className="footer-column3-text">
                     <span className="d-lg-block d-md-block d-none">Follow us : </span>
+                    <div className="row container-fluid mt-1 pl-lg-0 justify-content-lg-start justify-content-center">  
+                    <div className="col-1">
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Facebook</b> page!</span></React.Fragment>} arrow>
                     <a href={facebook} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" /> 
                     </a>
+                    </Tooltip>
+                    </div>
+                    <div className="col-1">
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Twitter</b> page!</span></React.Fragment>} arrow>
                     <a href={twitter} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-twitter" src={TwitterIcon} alt="twitter-icon"  /> 
                     </a>
+                    </Tooltip>
+                    </div>
+                    <div className="col-1">
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Instagram</b> page!</span></React.Fragment>} arrow>
                     <a href={instagram} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={InstagramIcon} alt="instagram-icon" />
                     </a>
+                    </Tooltip>
+                    </div>
+                    <div className="col-1">
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Linkedin</b> page!</span></React.Fragment>} arrow>
                     <a href={linkedin} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={LinkedinIcon} alt="linkedin-icon" />
                     </a>
+                    </Tooltip>
+                    </div>
+                    <div className="col-1">
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Spotify</b> page!</span></React.Fragment>} arrow>
                     <a href={spotify} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={SpotifyIcon} alt="spotify-icon" />
                     </a>
+                    </Tooltip>
+                    </div>
+                    <div className="col-1">
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Youtube</b> page!</span></React.Fragment>} arrow>
                     <a href={youtube} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={YoutubeIcon} alt="youtube-icon" />
                     </a>
+                    </Tooltip>
+                    </div>
+                    </div>
                 </div>
                 </div>
                 <div className="col-lg-3 col-md-6 col-xs-12 col-sm-12 text-lg-left text-center">
@@ -89,7 +116,7 @@ function Footer(){
                     </div>
                     <div className="col-lg-8 col-md-7 col-6 text-lg-left text-center">
                     <p className="footer-column4-text">{address1} <br /> {address2}<br/>{cp}</p>
-                    <p className="footer-column4-text"><a className="footer-anchor" href={"tel:"+phone} target="_blank" rel="noopener noreferrer">{phone}</a></p>
+                    <p className="footer-column4-text"><a className="footer-anchor-1" href={"tel:"+phone} target="_blank" rel="noopener noreferrer">{phone}</a></p>
                     </div>
                 </div>
    

@@ -251,14 +251,14 @@ function Blogs(){
                 
                 <a className="ml-lg-3 ml-0" href="/" style={{textDecoration : "none"}}>
                 <div className="row first-card mb-3">
-                    <p className="first-card-heading pt-4">Have something to share? <br />Get in touch! <p className="first-card-summary pt-3">We would love to hear your story. </p></p>
+                    <p className="first-card-heading pt-4 pl-4">Have something to share? <br />Get in touch! <p className="first-card-summary pt-3">We would love to hear your story. </p></p>
                     
                 </div>
                 </a>
                 
                 <a className="ml-lg-3 ml-0" href="/" style={{textDecoration : "none"}}>
                 <div className="row second-card mb-4">
-                    <p className="second-card-heading pt-4">Products Services!<p className="second-card-summary pt-3">For our blogs</p></p>
+                    <p className="second-card-heading pt-4 pl-4">Products Services!<p className="second-card-summary pt-3">For our blogs</p></p>
                     
                 </div>
                 </a>
