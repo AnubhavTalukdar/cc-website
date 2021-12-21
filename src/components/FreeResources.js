@@ -11,6 +11,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import Cookies from 'js-cookie'
 var arraySort = require('array-sort');
 
+
 function FreeResources() {
 
     const [show, setShow] = useState(false);
