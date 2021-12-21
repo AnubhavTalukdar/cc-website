@@ -98,7 +98,7 @@ function Footer(){
                     </Tooltip>
                     </div>
                     <div className="col-1">
-                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Youtube</b> page!</span></React.Fragment>} arrow>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>YouTube</b> page!</span></React.Fragment>} arrow>
                     <a href={youtube} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={YoutubeIcon} alt="youtube-icon" />
                     </a>

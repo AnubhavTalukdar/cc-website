@@ -170,7 +170,7 @@
 
 a:hover {
     text-decoration: none;
-    color: white;
+    color: lightslategray;
 }
 .right-margin-remover {
     padding-right: 0px !important;
@@ -638,6 +638,7 @@ a:hover {
     box-shadow: -1px 0px 5px 0px rgb(50 50 50 / 30%);
     padding-top: 1rem;
     padding-bottom: 1rem;
+    border-radius: 15px;
 }
 
 .blog-cards {
@@ -646,6 +647,7 @@ a:hover {
     box-shadow: -1px 0px 5px 0px rgb(50 50 50 / 30%);
     padding-top: 1rem;
     padding-bottom: 1rem;
+    border-radius: 15px;
 }
 
 .highlight-cards {
@@ -654,7 +656,8 @@ a:hover {
     box-shadow: -1px 0px 5px 0px rgb(50 50 50 / 30%);
     padding-top: 1rem;
     padding-bottom: 1rem;
-    height: 10rem;
+    height: 9rem;
+    border-radius: 12px;
 }
 
 

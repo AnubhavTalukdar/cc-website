@@ -11,31 +11,32 @@ import Spinner from 'react-bootstrap/Spinner'
 import Cookies from 'js-cookie'
 var arraySort = require('array-sort');
 
-function FreeResources(){
+function FreeResources() {
+
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
     const [freeResources, setFreeResources] = useState([]);
     const [filteredResources, setFilteredResources] = useState([]);
-    const [length, setLength] = useState(0)
-    const [visible, setVisible] = useState(5)
-    const [length1, setLength1] = useState(0)
-    const [visible1, setVisible1] = useState(5)
-    const [filter, setFilter] = useState(Cookies.get("Category"))
-    const [categories, setCategories] = useState([])
-    const [fEmail, setFEmail] = useState("")
-    const [disp1, setDisp1] = useState("block")
-    const [disp2, setDisp2] = useState("none")
-    const [resourceLink, setResourceLink] = useState("")
+    const [length, setLength] = useState(0);
+    const [visible, setVisible] = useState(5);
+    const [length1, setLength1] = useState(0);
+    const [visible1, setVisible1] = useState(5);
+    const [filter, setFilter] = useState(Cookies.get("Category"));
+    const [categories, setCategories] = useState([]);
+    const [fEmail, setFEmail] = useState("");
+    const [disp1, setDisp1] = useState("block");
+    const [disp2, setDisp2] = useState("none");
+    const [resourceLink, setResourceLink] = useState("");
 
-    const [name, setName] = useState("")
-    const [company, setCompany] = useState("")
-    const [cEmail, setCEmail] = useState("")
-    const [number, setNumber] = useState("")
-    const [message, setMessage] = useState("")
-    const [disp3, setDisp3] = useState("block")
-    const [disp4, setDisp4] = useState("none")
+    const [name, setName] = useState("");
+    const [company, setCompany] = useState("");
+    const [cEmail, setCEmail] = useState("");
+    const [number, setNumber] = useState("");
+    const [message, setMessage] = useState("");
+    const [disp3, setDisp3] = useState("block");
+    const [disp4, setDisp4] = useState("none");
 
     const blue = "-webkit-linear-gradient(70deg, #34ADFF 35%, #4CBFFF 35%)"
     const purple = "-webkit-linear-gradient(70deg, #45338F 35%, #7A69BF 35%)"
@@ -49,8 +50,7 @@ function FreeResources(){
     const handleClose1 = () => setShow1(false);
     const handleShow1 = () => setShow1(true);
 
-    const handleClose2 = () => setShow2(false);
-
+    const handleClose2 = () => setShow2(false); 
     const handleClose3 = () => setShow3(false);
     
    
@@ -149,7 +149,7 @@ function FreeResources(){
 
     return(
         <>
-        <div className="row pt-5 pb-2 container-fluid justify-content-center">
+        <div className="row pt-lg-5 pt-0 pb-2 container-fluid justify-content-center">
         <div className="col-lg-5 pl-5 pb-lg-5 pb-3 mt-auto">
             <p className="freeresources-text1 pt-lg-none pt-md-none pt-5">We are here to help you create a <br />Conscious Culture. sectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
         </div>
@@ -297,7 +297,7 @@ function FreeResources(){
             </form>
         </Modal.Body>
       </Modal>
-      <Modal show={show2} centered onHide={handleClose2} dialogClassName="modal-90w">
+      <Modal show={show2} centered onHide={handleClose2}>
         <Modal.Body>
         <div className="py-3">
             <center>

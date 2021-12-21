@@ -262,7 +262,7 @@ function Homepage(){
         </div>  
         <div className="homepage-section1 container-fluid px-0">
             <Carousel>
-                <Carousel.Item interval={4000}><img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" />
+                <Carousel.Item interval={15000}><img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" />
                 <div className="img-writeup1"><h4 className="img-writeup-text">Create a culture where</h4></div><br />
                 <div className="img-writeup2"><h4 className="img-writeup-text">diversity thrives</h4></div>
                 <div className="img-writeup3">
@@ -279,15 +279,48 @@ function Homepage(){
                 </select>
                 </div>
                 </Carousel.Item>
-                <Carousel.Item interval={4000}><img src={HomepagePicture1} className="carousel-img d-block w-100" alt="carousel-img-2" /><div className="img-writeup1" style={{display: 'none'}}><h4 className="img-writeup-text">Create a culture where</h4></div><br /><div className="img-writeup2" style={{display: 'none'}}><h4 className="img-writeup-text">diversity thrives</h4></div></Carousel.Item>
-                <Carousel.Item interval={4000}><img src={HomepagePicture2} className="carousel-img d-block w-100" alt="carousel-img-2" /><div className="img-writeup1" style={{display: 'none'}}><h4 className="img-writeup-text">Create a culture where</h4></div><br /><div className="img-writeup2" style={{display: 'none'}}><h4 className="img-writeup-text">diversity thrives</h4></div></Carousel.Item>
+                <Carousel.Item interval={15000}><img src={HomepagePicture1} className="carousel-img d-block w-100" alt="carousel-img-2" />
+                <div className="img-writeup1"><h4 className="img-writeup-text">Create a culture where</h4></div><br />
+                <div className="img-writeup2"><h4 className="img-writeup-text">diversity thrives</h4></div>
+                <div className="img-writeup3">
+                <select className="form-select homepage-select" onChange={changeLooking}>
+                    <option value="" selected disabled>I am looking for...</option>
+                    <option value="1" >Free DEI resources for individuals</option>
+                    <option value="2">Free DEI resources for team leaders</option>
+                    <option value="3">Free DEI resources for organisations</option>
+                    <option value="4">Services to review your organisation culture</option>
+                    <option value="5">Sessions to build awareness</option>
+                    <option value="6">Learning and development training</option>
+                    <option value="7">Have an idea ?</option>
+                    <option value="8">Passionate about DEI, want to join the community ? </option>
+                </select>
+                </div>
+                </Carousel.Item>
+                <Carousel.Item interval={15000}><img src={HomepagePicture2} className="carousel-img d-block w-100" alt="carousel-img-2" />
+                <div className="img-writeup1"><h4 className="img-writeup-text">Create a culture where</h4></div><br />
+                <div className="img-writeup2"><h4 className="img-writeup-text">diversity thrives</h4></div>
+                <div className="img-writeup3">
+                <select className="form-select homepage-select" onChange={changeLooking}>
+                    <option value="" selected disabled>I am looking for...</option>
+                    <option value="1" >Free DEI resources for individuals</option>
+                    <option value="2">Free DEI resources for team leaders</option>
+                    <option value="3">Free DEI resources for organisations</option>
+                    <option value="4">Services to review your organisation culture</option>
+                    <option value="5">Sessions to build awareness</option>
+                    <option value="6">Learning and development training</option>
+                    <option value="7">Have an idea ?</option>
+                    <option value="8">Passionate about DEI, want to join the community ? </option>
+                </select>
+                </div>
+                </Carousel.Item>
+                
             </Carousel>
         
         </div>
         
-        <div className="homepage-section2 container-fluid px-0 mt-lg-5 mt-md-5 mt-3 px-lg-3 px-none">
+        <div className="homepage-section2 container-fluid px-0 mt-lg-5 mt-md-5 mt-0 px-lg-3 px-none">
             
-            <div className="row container-fluid right-padding-remover">
+            <div className="row pl-lg-0 pl-md-0 pl-4 container-fluid right-padding-remover">
                 <div className="col-lg-7 pl-md-5 pl-0 right-padding-remover pt-3">
                     { last.map((b) =>(
                         <div className="row pl-5 container-fluid highlight-padding-remover mb-3">
@@ -300,7 +333,7 @@ function Homepage(){
                             <div className="col-lg-12 col-8">
                             <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-highlight-heading">{b.Title}</p></a>
 
-                            <p className="homepage-section2-highlight-read">{b.Summary}</p>
+                            <p className="homepage-section2-highlight-read">{b.Summary.substring(0,50)}...</p>
 
                             <p className="homepage-section2-highlight-author">{b.Author} <br/><p className="homepage-section2-highlight-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</p></p>
                             </div>
@@ -321,7 +354,7 @@ function Homepage(){
                         </div>
                         <div className="col-8">
                             <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-blog-heading">{b.Title}</p></a>
-                            <p className="homepage-section2-blog-subheading">{b.Summary}</p>
+                            <p className="homepage-section2-blog-subheading">{b.Summary.substring(0,50)}...</p>
                             <p className="homepage-section2-blog-author">{b.Author}<br /><span className="homepage-section2-blog-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</span></p>
                         </div>
                         </a>
@@ -508,7 +541,7 @@ function Homepage(){
             <div className="col-lg-5 col-sm-12 pl-lg-5 pl-none pb-lg-0 pb-4">
                 <p className="homepage-section4-text1">"Our team at Trucup found CIELead Untapped analysis report highly useful. After having gone through many psychometric tests in my professional career, I thought I had a good understanding of my unconscious bias. However, Untapped brought a lot of internalized opinions to the surface. The tools provided by CIELead helped us design a better communication strategy to reach out to diverse customer segments."</p>
                 <p className="homepage-section4-text2">Alakshi Tomar <br /><span className="homepage-section4-text3">Cofounder, TruCup</span></p>
-                <Carousel1 breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={3000}>
+                <Carousel1 breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={7000}>
                 { 
                 clients.map((c)=>(
                     <div className="homepage-logo-slides text-center">

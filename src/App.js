@@ -10,19 +10,20 @@ import ProductsPage from './routes/ProductsPage'
 import IndividualBlogPage from './routes/IndividualBlogPage'
 import NotFoundPage from './routes/NotFoundPage'
 import "./assets/css/style.css"
+
 function App() {
   return (
     <div className="App">
       <Router>
-      <HomepagePage path="/" />
-      <FAQPage path="/faq" />
-      <ContactUsPage path="/contactus"/>
-      <BlogsPage path="/blogs" />
-      <FreeResourcesPage path="/freeresources" />
-      <AboutUsPage path="/about" />
-      <ProductsPage path="/products" />
-      <IndividualBlogPage path="/blog/:blogId" />
-      <NotFoundPage path="*" />
+        <HomepagePage path="/" />
+        <FAQPage path="/faq" />
+        <ContactUsPage path="/contactus"/>
+        <BlogsPage path="/blogs" />
+        <FreeResourcesPage path="/freeresources" />
+        <AboutUsPage path="/about" />
+        <ProductsPage path="/products" />
+        <IndividualBlogPage path="/blog/:blogId" />
+        <NotFoundPage path="*" />
       </Router>
     </div>
   );

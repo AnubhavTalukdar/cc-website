@@ -8,11 +8,11 @@ import Footer from "./../components/Footer"
 function FreeResourcesPage(){
     return(
         <>
-        <Header />
-        <Nav />
-        <FreeResources />
-        <Newsletter />
-        <Footer />
+            <Header />
+            <Nav />
+            <FreeResources />
+            <Newsletter />
+            <Footer />
         </>
 
     );
