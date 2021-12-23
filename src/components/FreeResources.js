@@ -29,7 +29,8 @@ function FreeResources() {
     const [disp1, setDisp1] = useState("block");
     const [disp2, setDisp2] = useState("none");
     const [resourceLink, setResourceLink] = useState("");
-
+    const [resourceHeading, setResourceHeading] = useState("");
+    
     const [name, setName] = useState("");
     const [company, setCompany] = useState("");
     const [cEmail, setCEmail] = useState("");
@@ -80,11 +81,14 @@ function FreeResources() {
         setDisp1("none")
         setDisp2("block")
         window.Email.send({
-            SecureToken : "c27ae495-ba3b-4e95-b9c5-e04fa40e6549",
+            Host : "smtp.gmail.com",
+            Username : "teamconsciousculture@gmail.com",
+            Password : "hzjgcxhozgcbvrai",
             To : `${fEmail}`,
-            From : "dassubhra1998@gmail.com",
-            Subject : "This Mail is from Conscious Culture",
-            Body : '<h4>Greetings,</h4><h4>From Conscious Culture Team!</h4> <br ><a href="'+ resourceLink +'">Click on this link to open your free resource!</a>'
+            From : "teamconsciousculture@gmail.com",
+            Subject : "Here is your free resource from Conscious Culture",
+            // eslint-disable-next-line
+            Body : '<p>Hi there,</p><p>Thank you for visiting our website. We hope <em><b>'+resourceHeading+'</b></em> add value to you and your work.<br ><br >'+'<a href="'+ resourceLink +'">You may access the file here.</a>(Note: It will open in another tab and not download anything directly in your system).<br ><br >If you have any questions, requests, or feedback just hit reply and let\'s chat :) We look forward to hearing from you!<br ><br >'+'Best,<br >Team Conscious Culture<br ><a href="www.consciousculture.in">Website</a> | <a href="https://www.linkedin.com/company/consciousculture-in">LinkedIn</a> | <a href="https://www.instagram.com/consciousculture.in">Instagram</a></p>'
         })
         .then(
           response => {
@@ -182,7 +186,7 @@ function FreeResources() {
             <>
              { freeResources.slice(0,visible).map((f) => (
                 <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none">
-                <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={()=>{setResourceLink(BASE_URL + f.Resource.url);handleShow1()}} style={{ backgroundImage: f.Theme === "Blue" ? blue : f.Theme === "Red" ? red : f.Theme === "Purple" ? purple : f.Theme === "Yellow" ? yellow : maroon}}>
+                <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={()=>{setResourceLink(BASE_URL + f.Resource.url);setResourceHeading(f.Title);handleShow1()}} style={{ backgroundImage: f.Theme === "Blue" ? blue : f.Theme === "Red" ? red : f.Theme === "Purple" ? purple : f.Theme === "Yellow" ? yellow : maroon}}>
                     <div className="col-lg-4 col-md-4 col-sm-12">
                         <img className="freeresource-img" src={BASE_URL + f.Cover_Image.formats.thumbnail.url} alt=""/>
                     </div>
@@ -213,7 +217,7 @@ function FreeResources() {
             <>
             { filteredResources.slice(0,visible).map((f) => (
                 <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none">
-                <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={()=>{setResourceLink(BASE_URL + f.Resource.url);handleShow1()}} style={{ backgroundImage: f.Theme === "Blue" ? blue : f.Theme === "Red" ? red : f.Theme === "Purple" ? purple : f.Theme === "Yellow" ? yellow : maroon}}>
+                <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={()=>{setResourceLink(BASE_URL + f.Resource.url);setResourceHeading(f.Title);handleShow1()}} style={{ backgroundImage: f.Theme === "Blue" ? blue : f.Theme === "Red" ? red : f.Theme === "Purple" ? purple : f.Theme === "Yellow" ? yellow : maroon}}>
                     <div className="col-lg-4 col-md-4 col-sm-12">
                         <img className="freeresource-img" src={BASE_URL + f.Cover_Image.formats.thumbnail.url} height="200vh" alt=""/>
                     </div>

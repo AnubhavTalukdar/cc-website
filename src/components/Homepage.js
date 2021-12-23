@@ -10,10 +10,6 @@ import SideArrow from "../assets/img/sidearrow.PNG"
 import HomepagePicture from "../assets/img/HomepagePicture.jpg"
 import HomepagePicture1 from "../assets/img/HomepagePicture1.jpg"
 import HomepagePicture2 from "../assets/img/HomepagePicture2.jpg"
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
 import { BASE_URL } from "../config/url";
 import axios from "axios"
 import ProgressBar from 'react-bootstrap/ProgressBar'
@@ -24,25 +20,9 @@ import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 var arraySort = require('array-sort');
 
-const useStyles = makeStyles((theme) => ({
-    modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    paper: {
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-  }));
 
 function Homepage(){
     
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
-   
     const [id, setId] = useState(0)
     const [question, setQuestion] = useState("")
     const [questionDesc, setQuestionDesc] = useState("")
@@ -125,10 +105,6 @@ function Homepage(){
         }
         
     }
-
-    const handleClose = () => {
-      setOpen(false);
-    };
 
     const [blogs, setBlogs] = useState([])
 
@@ -235,31 +211,6 @@ function Homepage(){
 
     return(
         <>
-        <div>
-        <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className={classes.modal}
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-            timeout: 500,
-            }}
-        >
-            <Fade in={open}>
-            <div className={classes.paper}>
-                <h4 id="transition-modal-title">The website is currently under construction!</h4>
-                <br />
-                <br />
-                <div className="text-right">
-                    <button className="btn btn-info" onClick={handleClose}>Continue to site</button>
-                </div>
-            </div>
-            </Fade>
-        </Modal>
-        </div>  
         <div className="homepage-section1 container-fluid px-0">
             <Carousel>
                 <Carousel.Item interval={15000}><img src={HomepagePicture} className="carousel-img d-block w-100" alt="carousel-img-2" />

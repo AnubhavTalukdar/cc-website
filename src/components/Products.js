@@ -63,7 +63,7 @@ function Products(){
                     <img className="clipart1" src={products} alt="product" width="100%" />
                 </div >
             </div>
-            <div className="products-section2 container-fluid pt-5 pb-5">
+            <div className="products-section2 container-fluid pt-5 pb-5 px-lg-5 px-md-3 px-0">
             <h1 className="products-section2-heading text-center">Facts</h1>
             <br />
                 <div className="row pt-2 products-section2-row container-fluid">
@@ -84,7 +84,7 @@ function Products(){
                     </div>
                 </div>
             </div>
-            <div className="products-section3 container-fluid pt-5 pb-5">
+            <div className="products-section3 container-fluid pt-5 pb-5 px-lg-5 px-md-3 px-0">
                 <h1 className="products-section3-heading text-center">Our Offerings</h1>
                 <br />
                 <br id="product"/>
@@ -99,7 +99,7 @@ function Products(){
                     </div>
                     <div className="col-lg-6 col-sm-12 mt-lg-0 mt-5">
                         <h1 className="products-section3-subheading">{o.Heading}</h1>
-                        <p className="products-section3-desc mt-4 mt-lg-5">
+                        <p className="products-section3-desc mt-4 mt-lg-4">
                         {o.Description}
                         </p>
                         <a href={freeconsult} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><button className="mt-4 mt-lg-5 btn btn-info">Free Consult</button></a>
@@ -135,7 +135,7 @@ function Products(){
                     </div>
                     <div className="col-lg-6 col-sm-12 mt-lg-0 mt-5">
                         <h1 className="products-section3-subheading">{o.Heading}</h1>
-                        <p className="products-section3-desc mt-4 mt-lg-5">
+                        <p className="products-section3-desc mt-4 mt-lg-4">
                         {o.Description}
                         </p>
                         <a href={freeconsult} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><button className="mt-4 mt-lg-5 btn btn-info">Free Consult</button></a>

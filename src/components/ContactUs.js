@@ -49,9 +49,10 @@ function ContactUs(){
         })
         // eslint-disable-next-line
         window.Email.send({
-            SecureToken : "c27ae495-ba3b-4e95-b9c5-e04fa40e6549",
+            Host : "smtp.gmail.com",
+            Username : "teamconsciousculture@gmail.com",
+            Password : "hzjgcxhozgcbvrai",
             To : 'dassubhra1998@gmail.com',
-            From : "dassubhra1998@gmail.com",
             Subject : name+' tried contacting Conscious Culture',
             // eslint-disable-next-line
             Body : 'Name : ' + name + '<br >' + 'Phone : '+ number + '<br >' + 'Email : ' + cEmail + '<br >' + 'Company : ' + company + '<br >' + 'Message : <br>' + message
