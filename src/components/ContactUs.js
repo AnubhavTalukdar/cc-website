@@ -53,6 +53,7 @@ function ContactUs(){
             Username : "teamconsciousculture@gmail.com",
             Password : "hzjgcxhozgcbvrai",
             To : 'dassubhra1998@gmail.com',
+            From : 'teamconsciousculture@gmail.com',
             Subject : name+' tried contacting Conscious Culture',
             // eslint-disable-next-line
             Body : 'Name : ' + name + '<br >' + 'Phone : '+ number + '<br >' + 'Email : ' + cEmail + '<br >' + 'Company : ' + company + '<br >' + 'Message : <br>' + message
