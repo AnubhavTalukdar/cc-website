@@ -52,7 +52,7 @@ function ContactUs(){
             Host : "smtp.gmail.com",
             Username : "teamconsciousculture@gmail.com",
             Password : "hzjgcxhozgcbvrai",
-            To : 'dassubhra1998@gmail.com',
+            To : 'contact@consciousculture.in',
             From : 'teamconsciousculture@gmail.com',
             Subject : name+' tried contacting Conscious Culture',
             // eslint-disable-next-line
@@ -95,8 +95,8 @@ function ContactUs(){
     <>
     <div className="row pt-5 container-fluid justify-content-center">
         <div className="col-lg-5 pl-5 pb-5 mt-auto">
-            <p className="contact-us-text1">We always love hearing <br className="d-lg-block d-md-block d-none"/>from you!</p>
-            <p className="contact-us-text1"> Send us your queries, give us feedback <br/>or start a conversation or join in/<br/>contribute/collaborate!</p>
+            <p className="contact-us-text1">We always love hearing <br className="d-lg-block d-none"/>from you!</p>
+            <p className="contact-us-text1"> Send us your queries, give us feedback <br className="d-lg-block d-none" />or start a conversation or join in/<br className="d-lg-block d-none"/>contribute/collaborate!</p>
         </div>
         <div className="col-lg-5 pl-5 text-center text-lg-right">
             <img className="clipart1" src={clipart1} alt="clipart1" width="85%" />

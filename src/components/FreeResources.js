@@ -155,7 +155,7 @@ function FreeResources() {
         <>
         <div className="row pt-lg-5 pt-0 pb-2 container-fluid justify-content-center">
         <div className="col-lg-5 pl-5 pb-lg-5 pb-3 mt-auto">
-            <p className="freeresources-text1 pt-lg-none pt-md-none pt-5">We are here to help you create a <br />Conscious Culture. sectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+            <p className="freeresources-text1 pt-lg-none pt-md-none pt-5">We are here to help you create a <br className="d-lg-block d-none"/>Conscious Culture. sectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
         </div>
         <div className="col-lg-5 pl-5 text-center text-lg-right">
             <img className="clipart2" src={clipart2} alt="clipart1" width="100%" />

@@ -306,7 +306,7 @@ function Homepage(){
                         <div className="col-8">
                             <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-blog-heading">{b.Title}</p></a>
                             <p className="homepage-section2-blog-subheading">{b.Summary.substring(0,50)}...</p>
-                            <p className="homepage-section2-blog-author">{b.Author}<br /><span className="homepage-section2-blog-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</span></p>
+                            <p className="homepage-section2-blog-author">{b.Author.length > 19 ? `${b.Author.substring(0,18)}...` : b.Author}<br /><span className="homepage-section2-blog-read">{b.Date_of_Publishing} | {b.Reading_Time} min read</span></p>
                         </div>
                         </a>
                     </div>
@@ -325,12 +325,12 @@ function Homepage(){
                     { optionC === "" && optionD === "" ?
                     <>
                     <div className="row container-fluid">
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                         <input type="radio" id="op1" name="response" onClick={()=>{setOp1(1);setOp2(0);setOp3(0);setOp4(0);}} required/>
                         &nbsp;&nbsp;
                         <label className="homepage-section2-question-label">{optionA}</label>
                         </div>
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                         <input type="radio" id="op2" name="response" onClick={()=>{setOp1(0);setOp2(1);setOp3(0);setOp4(0);}} required/>
                         &nbsp;&nbsp;
                         <label className="homepage-section2-question-label">{optionB}</label>
@@ -339,24 +339,24 @@ function Homepage(){
                     </> :
                     <>
                     <div className="row container-fluid">
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                         <input type="radio" id="op1" name="response" onClick={()=>{setOp1(1);setOp2(0);setOp3(0);setOp4(0);}} required/>
                         &nbsp;&nbsp;
                         <label className="homepage-section2-question-label" >{optionA}</label>
                         </div>
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                         <input type="radio" id="op2" name="response" onClick={()=>{setOp1(0);setOp2(1);setOp3(0);setOp4(0);}} required/>
                         &nbsp;&nbsp;
                         <label className="homepage-section2-question-label" >{optionB}</label>
                         </div>
                     </div>
                     <div className="row container-fluid">
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                         <input type="radio" id="op3" name="response" onClick={()=>{setOp1(0);setOp2(0);setOp3(1);setOp4(0);}} required/>
                         &nbsp;&nbsp;
                         <label className="homepage-section2-question-label" >{optionC}</label>
                         </div>
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                         <input type="radio" id="op4" name="response" onClick={()=>{setOp1(0);setOp2(0);setOp3(0);setOp4(1);}} required/>
                         &nbsp;&nbsp;
                         <label className="homepage-section2-question-label" >{optionD}</label>
@@ -389,28 +389,28 @@ function Homepage(){
                     { optionC === "" && optionD === "" ?
                     <>
                     <div className="row container-fluid">
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                             <label className="homepage-section2-question-label" >A: {optionA}</label>
                         </div>
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                             <label className="homepage-section2-question-label" >B: {optionB}</label>
                         </div>
                     </div>
                     </> :
                     <>
                     <div className="row container-fluid">
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                             <label className="homepage-section2-question-label" >A: {optionA}</label>
                         </div>
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                             <label className="homepage-section2-question-label" >B: {optionB}</label>
                         </div>
                     </div>
                     <div className="row container-fluid">
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                             <label className="homepage-section2-question-label" >C: {optionC}</label>
                         </div>
-                        <div className="col-6 px-0">
+                        <div className="col-lg-6 col-md-6 col-12 px-0">
                             <label className="homepage-section2-question-label" >D: {optionD}</label>
                         </div>
                     </div>
@@ -448,7 +448,7 @@ function Homepage(){
                         <center>
                             <h4 className="homepage-section3-card-heading pt-1">{card1head}</h4>
                         </center>
-                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card1desc}</ReactMarkdown></p>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4 text-center"><ReactMarkdown remarkPlugins={[gfm]}>{card1desc}</ReactMarkdown></p>
                     </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
@@ -458,7 +458,7 @@ function Homepage(){
                         <center>
                             <h4 className="homepage-section3-card-heading">{card2head}</h4>
                         </center>
-                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card2desc}</ReactMarkdown></p>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4 text-center"><ReactMarkdown remarkPlugins={[gfm]}>{card2desc}</ReactMarkdown></p>
                     </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
@@ -468,7 +468,7 @@ function Homepage(){
                         <center>
                             <h4 className="homepage-section3-card-heading">{card3head}</h4>
                         </center>
-                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card3desc}</ReactMarkdown></p>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4 text-center"><ReactMarkdown remarkPlugins={[gfm]}>{card3desc}</ReactMarkdown></p>
                     </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
@@ -492,7 +492,7 @@ function Homepage(){
             <div className="col-lg-5 col-sm-12 pl-lg-5 pl-none pb-lg-0 pb-4">
                 <p className="homepage-section4-text1">"Our team at Trucup found CIELead Untapped analysis report highly useful. After having gone through many psychometric tests in my professional career, I thought I had a good understanding of my unconscious bias. However, Untapped brought a lot of internalized opinions to the surface. The tools provided by CIELead helped us design a better communication strategy to reach out to diverse customer segments."</p>
                 <p className="homepage-section4-text2">Alakshi Tomar <br /><span className="homepage-section4-text3">Cofounder, TruCup</span></p>
-                <Carousel1 breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={7000}>
+                <Carousel1 breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={15000}>
                 { 
                 clients.map((c)=>(
                     <div className="homepage-logo-slides text-center">

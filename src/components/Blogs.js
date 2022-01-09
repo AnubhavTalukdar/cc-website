@@ -111,7 +111,7 @@ function Blogs(){
         <div className="row pl-lg-5 pl-md-5 pr-lg-5 pl-3 pr-0 container-fluid">
             <div className="col-lg-7 col-sm-12 pl-lg-5 pl-none">
                 <div className="row">
-                    <h1 className="our-blogs-heading2 pl-lg-3 pl-4">Our Blogs</h1>
+                    <h1 className="our-blogs-heading2 pl-lg-3 pl-4">Our blogs</h1>
         
                     <div className="row mt-2 pl-md-4 pl-5 pb-4">
                         <div className="col-lg-4 col-sm-none">
@@ -143,8 +143,8 @@ function Blogs(){
                             value={sort}
                             onChange={changeSort}
                             >
-                            <MenuItem value="Newest">Newest First</MenuItem>
-                            <MenuItem value="Oldest">Oldest First</MenuItem>
+                            <MenuItem value="Newest">Newest first</MenuItem>
+                            <MenuItem value="Oldest">Oldest first</MenuItem>
                             
                             
                             </Select>
@@ -249,7 +249,7 @@ function Blogs(){
                     <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4 ml-lg-5 ml-0" onClick={loadMore1} style={{display : visible1 >= length1 || length1 <= 5 ? "none": "block"}}>Load More</button>
                 </center>
                 
-                <a className="ml-lg-3 ml-0" href="/" style={{textDecoration : "none"}}>
+                <a className="ml-lg-3 ml-0" href="/contactus/#contactUsForm" style={{textDecoration : "none"}}>
                 <div className="row first-card mb-3">
                     <p className="first-card-heading pt-4 pl-4">Have something to share? <br />Get in touch! <p className="first-card-summary pt-3">We would love to hear your story. </p></p>
                     
