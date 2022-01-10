@@ -376,7 +376,7 @@ function Homepage(){
                     </div>
                     </form>
                 </div>
-                <div className="col-lg-5 pt-3 pl-4 my-auto" id="responses" style={{display : ((Cookies.get("Quiz") === "Yes") && (Cookies.get("QuizId") === id.toString())) ? "block" : "none"}}>
+                <div className="col-lg-5 pt-3 pl-lg-4 pl-md-5 pl-4 my-auto" id="responses" style={{display : ((Cookies.get("Quiz") === "Yes") && (Cookies.get("QuizId") === id.toString())) ? "block" : "none"}}>
                     <p className="homepage-section2-question-subheading2 text-center">Thank you for participating!</p>
                     <br />
                     <ProgressBar style={{height : "50px"}}>
@@ -448,7 +448,7 @@ function Homepage(){
                         <center>
                             <h4 className="homepage-section3-card-heading pt-1">{card1head}</h4>
                         </center>
-                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4 text-center"><ReactMarkdown remarkPlugins={[gfm]}>{card1desc}</ReactMarkdown></p>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card1desc}</ReactMarkdown></p>
                     </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
@@ -458,7 +458,7 @@ function Homepage(){
                         <center>
                             <h4 className="homepage-section3-card-heading">{card2head}</h4>
                         </center>
-                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4 text-center"><ReactMarkdown remarkPlugins={[gfm]}>{card2desc}</ReactMarkdown></p>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card2desc}</ReactMarkdown></p>
                     </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>
@@ -468,7 +468,7 @@ function Homepage(){
                         <center>
                             <h4 className="homepage-section3-card-heading">{card3head}</h4>
                         </center>
-                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4 text-center"><ReactMarkdown remarkPlugins={[gfm]}>{card3desc}</ReactMarkdown></p>
+                        <p className="homepage-section3-card-points pt-1 pl-4 pr-4"><ReactMarkdown remarkPlugins={[gfm]}>{card3desc}</ReactMarkdown></p>
                     </div>
                     <div className="homepage-section3-cardbottom text-center"><p className="homepage-section3-cardbottomtext pt-3">Become a growth ally now!</p></div>
                 </div>

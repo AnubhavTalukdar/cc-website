@@ -210,7 +210,7 @@ function FreeResources() {
             </div>
             
             <center>
-                <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4 mt-3" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
+                <button type="button" class="load-more-button ml-lg-0 ml-md-0 ml-5 mr-lg-none mr-md-3 mr-3 mb-4 mt-3" onClick={loadMore} style={{display : visible >= length || length <= 5 ? "none": "block"}}>Load More</button>
             </center>
 
             </>:
@@ -241,7 +241,7 @@ function FreeResources() {
             </div>
             
             <center >
-                <button type="button" class="load-more-button mr-lg-none mr-md-3 mr-3 mb-4 mt-3" onClick={loadMore1} style={{display : visible1 >= length1 || length1 <= 5 ? "none": "block"}}>Load More</button>
+                <button type="button" class="load-more-button ml-lg-0 ml-md-0 ml-5 mr-lg-none mr-md-3 mr-3 mb-4 mt-3" onClick={loadMore1} style={{display : visible1 >= length1 || length1 <= 5 ? "none": "block"}}>Load More</button>
             </center>
             </>
             }         
