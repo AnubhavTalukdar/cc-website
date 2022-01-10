@@ -70,7 +70,7 @@ function AboutUs(){
             </section>
             <div className="row about-section2 container-fluid justify-content-center">
             <div className="col-lg-10 pl-none pb-lg-5 pb-3">
-                <p className="about-section2-text pt-lg-none pt-md-none pt-5">
+                <p className="about-section2-text pt-lg-none pt-md-none pt-5 text-justify">
                 {topPara}
                 </p>
             </div>
