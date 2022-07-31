@@ -63,42 +63,42 @@ function Footer(){
                     <span className="d-lg-block d-md-block d-none">Follow us : </span>
                     <div className="row container-fluid mt-1 pl-lg-0 justify-content-lg-start justify-content-center">  
                     <div className="col-1">
-                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Facebook</b> page!</span></React.Fragment>} arrow>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Facebook</b> page</span></React.Fragment>} arrow>
                     <a href={facebook} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" /> 
                     </a>
                     </Tooltip>
                     </div>
                     <div className="col-1">
-                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Twitter</b> page!</span></React.Fragment>} arrow>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Twitter</b> page</span></React.Fragment>} arrow>
                     <a href={twitter} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-twitter" src={TwitterIcon} alt="twitter-icon"  /> 
                     </a>
                     </Tooltip>
                     </div>
                     <div className="col-1">
-                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Instagram</b> page!</span></React.Fragment>} arrow>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Instagram</b> page</span></React.Fragment>} arrow>
                     <a href={instagram} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={InstagramIcon} alt="instagram-icon" />
                     </a>
                     </Tooltip>
                     </div>
                     <div className="col-1">
-                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Linkedin</b> page!</span></React.Fragment>} arrow>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>LinkedIn</b> page</span></React.Fragment>} arrow>
                     <a href={linkedin} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={LinkedinIcon} alt="linkedin-icon" />
                     </a>
                     </Tooltip>
                     </div>
                     <div className="col-1">
-                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Spotify</b> page!</span></React.Fragment>} arrow>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Spotify</b> page</span></React.Fragment>} arrow>
                     <a href={spotify} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={SpotifyIcon} alt="spotify-icon" />
                     </a>
                     </Tooltip>
                     </div>
                     <div className="col-1">
-                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>YouTube</b> page!</span></React.Fragment>} arrow>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>YouTube</b> page</span></React.Fragment>} arrow>
                     <a href={youtube} target="_blank" rel="noopener noreferrer">
                         <img className="social-icons-instagram" src={YoutubeIcon} alt="youtube-icon" />
                     </a>

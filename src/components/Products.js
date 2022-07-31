@@ -1,6 +1,7 @@
 import React , {useEffect, useState} from "react"
 import products from "../assets/img/products.png"
 import products2 from "../assets/img/Product2.png"
+import avatar from "../assets/img/avatar-testimonial.png"
 import Carousel from "react-elastic-carousel"
 import axios from "axios"
 import { BASE_URL } from "../config/url";
@@ -95,7 +96,17 @@ function Products(){
                     <>
                     <div className="products-section3-row row container-fluid">
                     <div className="col-lg-6 col-sm-12 mt-lg-0 mt-5">
-                        <img className="rounded products-section3-img " src={BASE_URL + o.Image.url} alt="product-service1" width="100%" />
+                        {
+                            o.Image === null ?
+                            <>
+                                <img className="rounded products-section3-img " src="" alt="product-service1" width="100%" />
+                            </>
+                            :
+                            <>
+                                <img className="rounded products-section3-img " src={BASE_URL + o.Image.url} alt="product-service1" width="100%" />
+                            </>
+                        }
+                        
                     </div>
                     <div className="col-lg-6 col-sm-12 mt-lg-0 mt-5">
                         <h1 className="products-section3-subheading">{o.Heading}</h1>
@@ -108,7 +119,17 @@ function Products(){
                         </p>
                         <div className="row">
                             <div className="col-lg-1 col-md-1 col-2">
-                                <img className="rounded-circle" src={BASE_URL + o.Testimonial_Image.formats.thumbnail.url} alt="teammember-testimonial" width="45px" height="45px"/>
+                                {
+                                    o.Testimonial_Image === null ?
+                                    <>
+                                        <img className="rounded-circle" src={avatar} alt="teammember-testimonial" width="45px" height="45px"/>
+                                    </>
+                                    :
+                                    <>
+                                         <img className="rounded-circle" src={BASE_URL + o.Testimonial_Image.formats.thumbnail.url} alt="teammember-testimonial" width="45px" height="45px"/>
+                                    </>
+                                }
+                               
                             </div>
                         <div className="col-lg-11 col-md-11 col-6">
                             <div className="row ml-1 mt-2 products-section3-name">{o.Name}</div>
@@ -131,7 +152,16 @@ function Products(){
                     <>
                     <div className="products-section3-row row container-fluid">
                     <div className="mobile-products col-lg-6 col-sm-12 mt-lg-0 mt-5 d-lg-none d-block">
-                        <img className="rounded products-section3-img " src={BASE_URL + o.Image.url} alt="product-service2" width="100%"/>
+                        {
+                            o.Image === null ?
+                            <>
+                                <img className="rounded products-section3-img " src={BASE_URL + o.Image.url} alt="product-service2" width="100%"/>
+                            </>:
+                            <>
+                                <img className="rounded products-section3-img " src={BASE_URL + o.Image.url} alt="product-service2" width="100%"/>
+                            </>
+                        }
+                       
                     </div>
                     <div className="col-lg-6 col-sm-12 mt-lg-0 mt-5">
                         <h1 className="products-section3-subheading">{o.Heading}</h1>
@@ -144,7 +174,16 @@ function Products(){
                         </p>
                         <div className="row">
                             <div className="col-lg-1 col-md-1 col-2">
-                                <img className="rounded-circle" src={BASE_URL + o.Testimonial_Image.formats.thumbnail.url} alt="teammember-testimonial" width="45px" height="45px"/>
+                                {
+                                    o.Testimonial_Image === null ?
+                                    <>
+                                        <img className="rounded-circle" src={avatar} alt="teammember-testimonial" width="45px" height="45px"/>
+                                    </>
+                                    :
+                                    <>
+                                        <img className="rounded-circle" src={BASE_URL + o.Testimonial_Image.formats.thumbnail.url} alt="teammember-testimonial" width="45px" height="45px"/>
+                                    </>
+                                }
                             </div>
                         <div className="col-lg-11 col-md-11 col-6">
                             <div className="row ml-1 mt-2 products-section3-name">{o.Name}</div>
@@ -179,11 +218,19 @@ function Products(){
                 { 
                 clients.map((c)=>(
                     <div className="logo-slides text-center">
-                            <img src={BASE_URL + c.Image.url} alt="logo-img" height="70%" />
+                        {
+                            c.Image === null ?
+                            <>
+                                <img src="" alt="logo-img" height="70%" />
+                            </>:
+                            <>
+                                <img src={BASE_URL + c.Image.url} alt="logo-img" height="70%" />
+                            </>
+                        }
+                       
                     </div>
                 ))}
                 </Carousel>
-                
             
 
             </div>

@@ -93,7 +93,7 @@ function Blogs(){
                 { last.map((b)=>(
                     <div className="row container-fluid px-0 pl-5">
                     <div className="col-lg-8 col-sm-12">
-                    <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img className="highlight-img" src={BASE_URL + b.Placeholder_Image.url} alt="highlight-img" /></a>
+                    <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img className="highlight-img" src={b.Placeholder_Image === null ? "" : BASE_URL + b.Placeholder_Image.url} alt="highlight-img" /></a>
                 </div>
                 <div className="col-lg-4 col-sm-12">
                     <span className="highlight-category">{b.category.name} • </span>
@@ -157,8 +157,8 @@ function Blogs(){
                         
                         <div className="row pl-3 pb-3 ml-lg-2 ml-md-0 ml-1 mb-3">
                             <a className="row blog-cards" href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
-                            <div className="col-lg-6 col-md-6 col-sm-12">
-                                <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>  <img className="blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt=""/> </a>
+                            <div className="col-lg-6 col-md-6 col-sm-12" >
+                                <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>  <img className="blog-img" src={b.Placeholder_Image === null ? "" : BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt=""/> </a>
                             </div>
                             <div className="col-lg-6 col-md-6 col-sm-12">
                                 <span className="blog-category">{b.category.name} • </span>
@@ -198,7 +198,7 @@ function Blogs(){
                         <div className="row pl-3 pb-3 ml-lg-2 ml-md-0 ml-1 mb-3">
                             <a className="row blog-cards" href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
                             <div className="col-lg-6 col-md-6 col-sm-12">
-                                <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>  <img className="blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt=""/> </a>
+                                <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>  <img className="blog-img" src={b.Placeholder_Image === null ? "" : BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt=""/> </a>
                             </div>
                             <div className="col-lg-6 col-md-6 col-sm-12">
                                 <span className="blog-category">{b.category.name} • </span>
@@ -238,7 +238,7 @@ function Blogs(){
                          <p className="atw-medium">{a.Website_Name}<br /><span className="atw-dnr">{a.Date} | {a.Reading_Time} mins</span></p>
                      </div>
                      <div className="col-5 text-center left-padding-remover right-padding-remover">
-                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={BASE_URL + a.Image.formats.thumbnail.url} alt="" width="100%"/></a>
+                     <a href={a.Article_Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><img src={a.Image === null ? "" : BASE_URL + a.Image.formats.thumbnail.url} alt="" width="100%"/></a>
                      </div>
                      </a>
                  </div>

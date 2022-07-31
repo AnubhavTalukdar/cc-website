@@ -96,6 +96,7 @@ function FreeResources() {
               setShow2(true)
               setDisp1("block")
               setDisp2("none")
+              console.log(response)
           }
         );
     }
@@ -188,7 +189,7 @@ function FreeResources() {
                 <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none">
                 <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={()=>{setResourceLink(BASE_URL + f.Resource.url);setResourceHeading(f.Title);handleShow1()}} style={{ backgroundImage: f.Theme === "Blue" ? blue : f.Theme === "Red" ? red : f.Theme === "Purple" ? purple : f.Theme === "Yellow" ? yellow : maroon}}>
                     <div className="col-lg-4 col-md-4 col-sm-12">
-                        <img className="freeresource-img" src={BASE_URL + f.Cover_Image.formats.thumbnail.url} alt=""/>
+                        <img className="freeresource-img" src={f.Cover_Image === null ? "" : BASE_URL + f.Cover_Image.formats.thumbnail.url} alt=""/>
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-12 mt-lg-0 mt-3">
                         <h5 style={{color : "white"}}>{f.Title}</h5>
@@ -219,7 +220,7 @@ function FreeResources() {
                 <div className="col-lg-6 col-sm-12 py-none px-lg-5 px-none">
                 <div className="freeresources-card mt-3 row container-fluid py-5 px-3" onClick={()=>{setResourceLink(BASE_URL + f.Resource.url);setResourceHeading(f.Title);handleShow1()}} style={{ backgroundImage: f.Theme === "Blue" ? blue : f.Theme === "Red" ? red : f.Theme === "Purple" ? purple : f.Theme === "Yellow" ? yellow : maroon}}>
                     <div className="col-lg-4 col-md-4 col-sm-12">
-                        <img className="freeresource-img" src={BASE_URL + f.Cover_Image.formats.thumbnail.url} height="200vh" alt=""/>
+                        <img className="freeresource-img" src={f.Cover_Image === null ? "" : BASE_URL + f.Cover_Image.formats.thumbnail.url} height="200vh" alt=""/>
                     </div>
                     <div className="col-lg-8 col-md-8 col-sm-12 mt-lg-0 mt-3">
                         <h5 style={{color : "white"}}>{f.Title}</h5>

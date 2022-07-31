@@ -279,7 +279,7 @@ function Homepage(){
                         <div className="col-lg-12 col-md-12 col-sm-6 pl-md-0 pl-0 pt-3 pt-lg-0 pb-0 pb-lg-2">
                         <a className="row highlight-cards" href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
                             <div className="col-lg-12 col-4 d-lg-none d-block thumbnail-margin-remover">
-                                <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img className="homepage-section2-blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt="blog-img"/></a>
+                                <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img className="homepage-section2-blog-img" src={b.Placeholder_Image === null ? "" : BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt="blog-img"/></a>
                             </div>
                             <div className="col-lg-12 col-8">
                             <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-highlight-heading">{b.Title}</p></a>
@@ -301,7 +301,7 @@ function Homepage(){
                         <div className="col-lg-6 pt-2 mb-3 col-sm-12 ">
                         <a className="row ml-1 highlight-cards" href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}>
                         <div className="col-4 thumbnail-margin-remover">
-                            <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img className="homepage-section2-blog-img" src={BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt="blog-img"/></a>
+                            <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <img className="homepage-section2-blog-img" src={b.Placeholder_Image === null ? "" : BASE_URL + b.Placeholder_Image.formats.thumbnail.url} alt="blog-img"/></a>
                         </div>
                         <div className="col-8">
                             <a href={'blog/'+b.id} style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}> <p className="homepage-section2-blog-heading">{b.Title}</p></a>
@@ -496,7 +496,7 @@ function Homepage(){
                 { 
                 clients.map((c)=>(
                     <div className="homepage-logo-slides text-center">
-                            <img src={BASE_URL + c.Image.url} alt="logo-img" height="70%" />
+                            <img src={c.Image === null ? "" : BASE_URL + c.Image.url} alt="logo-img" height="70%" />
                     </div>
                 ))}
                 </Carousel1>

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Carousel from "react-elastic-carousel"
 import { BASE_URL } from "../config/url";
 import axios from "axios"
+import avatar from "../assets/img/avatar-testimonial.png"
 var arraySort = require('array-sort');
 
 function AboutUs(){
@@ -98,7 +99,16 @@ function AboutUs(){
                 <Carousel className="team" breakPoints={breakPoints}>
                     { team.map((t)=>(
                     <div className="team-card text-center">
-                        <img src={BASE_URL + t.Image.formats.thumbnail.url} className="rounded-circle team-card-photo" alt="teammember" />
+                        {
+                            t.Image === null ?
+                            <>
+                                <img src={avatar} className="rounded-circle team-card-photo" alt="teammember" />
+                            </>:
+                            <>
+                                <img src={BASE_URL + t.Image.formats.thumbnail.url} className="rounded-circle team-card-photo" alt="teammember" />
+                            </>
+                        }
+                        
                         <h6 className="mt-5 team-card-heading">{t.Name}, {t.Designation}</h6>
                         <p className="team-card-desc pl-3 pr-3 text-justify mt-3">{t.Description}</p>
                     </div>
@@ -116,7 +126,16 @@ function AboutUs(){
                     { testimonials.map((t)=>(
                     <div className="row giants-card">
                         <div className="col-lg-4 col-sm-12 text-center">
-                            <img src={BASE_URL + t.Image.formats.thumbnail.url} className="rounded-circle giants-card-photo" alt="giants" />
+                            {
+                                t.Image === null ?
+                                <>
+                                    <img src={avatar} className="rounded-circle giants-card-photo" alt="giants" />
+                                </>:
+                                <>
+                                    <img src={BASE_URL + t.Image.formats.thumbnail.url} className="rounded-circle giants-card-photo" alt="giants" />
+                                </>
+                            }
+                           
                         </div>
                         <div className="col-lg-8 col-sm-12">
                             <h5 className="mt-1 giants-card-heading text-center text-lg-left">{t.Name}, {t.Designation}</h5>
@@ -136,7 +155,15 @@ function AboutUs(){
                 <Carousel breakPoints={breakPoints2}>
                     { media.map((m)=>(
                     <div className="media-card pl-3 pr-3">
-                        <img src={BASE_URL + m.Image.formats.thumbnail.url} className="media-card-photo" alt="media" />
+                        {
+                            m.Image === null ?
+                            <>
+                                <img src="" className="media-card-photo" alt="media" />
+                            </>:
+                            <>
+                                <img src={BASE_URL + m.Image.formats.thumbnail.url} className="media-card-photo" alt="media" />
+                            </>
+                        }
                         <h6 className="mt-5 media-card-desc">{m.Description}</h6>
                         <a href={m.Link} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><button className="mt-3 media-card-button btn btn-light">View More</button></a>
                     </div>  
