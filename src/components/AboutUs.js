@@ -150,8 +150,8 @@ function AboutUs(){
             </div>
             <div className="about-section7 container-fluid pt-5 pb-5">
             <h1 className="about-section7-heading text-center">Media Insertions</h1>
-           <br />
-           <br />
+            <br />
+            <br />
                 <Carousel breakPoints={breakPoints2}>
                     { media.map((m)=>(
                     <div className="media-card pl-3 pr-3">

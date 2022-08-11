@@ -11,6 +11,7 @@ import { BASE_URL } from "../config/url";
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
 import axios from "axios"
+import Tooltip from '@material-ui/core/Tooltip';
 
 function ContactUs(){
     const [name, setName] = useState("")
@@ -131,38 +132,50 @@ function ContactUs(){
                 <a href={"mailto:"+email} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><p className="contact-us-text2">{email}</p></a>
                 <p className="contact-us-text3 mt-lg-5 mb-lg-5 mt-2 mb-2">{address1} <br />{address2}<br />{cp}</p>
                 <a  href={"tel:"+phone} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><p className="contact-us-text4 mb-lg-5 mb-2">{phone}</p></a>
-                <p className="contact-us-text2 mt-lg-0 mt-md-0 mt-3">Our FAQ Section</p>
+                <p className="contact-us-text2 mt-lg-0 mt-md-0 mt-3">Follow us on Social Media</p>
                 <p>
                 <div className="row container-fluid pl-0">
                 <div className="col-1">
-                    <a href={facebook} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" /> 
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Facebook</b> page</span></React.Fragment>} arrow>
+                        <a href={facebook} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" /> 
+                        </a>
+                    </Tooltip>
                 </div>
                 <div className="col-1">
-                    <a href={twitter} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-twitter" src={TwitterIcon} alt="twitter-icon"  /> 
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Twitter</b> page</span></React.Fragment>} arrow>
+                        <a href={twitter} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-twitter" src={TwitterIcon} alt="twitter-icon"  /> 
+                        </a>
+                    </Tooltip>
                 </div>
                 <div className="col-1">
-                    <a href={instagram} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-instagram" src={InstagramIcon} alt="instagram-icon" />
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Instagram</b> page</span></React.Fragment>} arrow>
+                        <a href={instagram} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-instagram" src={InstagramIcon} alt="instagram-icon" />
+                        </a>
+                    </Tooltip>  
                 </div>
                 <div className="col-1">
-                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-instagram" src={LinkedinIcon} alt="linkedin-icon" />
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>LinkedIn</b> page</span></React.Fragment>} arrow>
+                        <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-instagram" src={LinkedinIcon} alt="linkedin-icon" />
+                        </a>
+                    </Tooltip>  
                 </div>
                 <div className="col-1">
-                    <a href={spotify} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-instagram" src={SpotifyIcon} alt="spotify-icon" />
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Spotify</b> page</span></React.Fragment>} arrow>
+                        <a href={spotify} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-instagram" src={SpotifyIcon} alt="spotify-icon" />
+                        </a>
+                    </Tooltip>  
                 </div>
                 <div className="col-1">
-                    <a href={youtube} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-instagram" src={YoutubeIcon} alt="youtube-icon" />
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Youtube</b> page</span></React.Fragment>} arrow>
+                        <a href={youtube} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-instagram" src={YoutubeIcon} alt="youtube-icon" />
+                        </a>
+                    </Tooltip>  
                 </div>
                 </div>
                 </p>

@@ -80,26 +80,16 @@ function FreeResources() {
         e.preventDefault()
         setDisp1("none")
         setDisp2("block")
-        window.Email.send({
-            Host : "smtp.gmail.com",
-            Username : "teamconsciousculture@gmail.com",
-            Password : "hzjgcxhozgcbvrai",
-            To : `${fEmail}`,
-            From : "teamconsciousculture@gmail.com",
-            Subject : "Here is your free resource from Conscious Culture",
-            // eslint-disable-next-line
-            Body : '<p>Hi there,</p><p>Thank you for visiting our website. We hope <em><b>'+resourceHeading+'</b></em> add value to you and your work.<br ><br >'+'<a href="'+ resourceLink +'">You may access the file here.</a>(Note: It will open in another tab and not download anything directly in your system).<br ><br >If you have any questions, requests, or feedback just hit reply and let\'s chat :) We look forward to hearing from you!<br ><br >'+'Best,<br >Team Conscious Culture<br ><a href="www.consciousculture.in">Website</a> | <a href="https://www.linkedin.com/company/consciousculture-in">LinkedIn</a> | <a href="https://www.instagram.com/consciousculture.in">Instagram</a></p>'
-        })
-        .then(
-          response => {
-              setShow1(false);
+       
+        axios.post('http://localhost:8000/email_resource', {resourceLink: resourceLink, resourceHeading: resourceHeading, email: fEmail})
+        .then(response => {
+            setShow1(false);
               setShow2(true)
               setDisp1("block")
               setDisp2("none")
-              console.log(response)
-          }
-        );
+        })
     }
+
 
     useEffect(() => { 
         window.scroll(0,0)
@@ -265,11 +255,11 @@ function FreeResources() {
             <br />
             <input type="email" class="contact-us-input form-control" id="email" placeholder="Email" style={{width : "100%"}} value={cEmail} onChange={(e)=>setCEmail(e.target.value)} required/>
             <br />
-            <input type="text" class="contact-us-input form-control" id="company" placeholder="Company" style={{width : "100%"}} value={company} onChange={(e)=>setCompany(e.target.value)} />
+            <input type="text" class="contact-us-input form-control" id="company" placeholder="Company Name" style={{width : "100%"}} value={company} onChange={(e)=>setCompany(e.target.value)} />
             <br />
-            <input type="number" class="contact-us-input form-control" id="contact" placeholder="Contact" style={{width : "100%"}} value={number} onChange={(e)=>setNumber(e.target.value)} required/>
+            <input type="number" class="contact-us-input form-control" id="contact" placeholder="Phone Number" style={{width : "100%"}} value={number} onChange={(e)=>setNumber(e.target.value)} required/>
             <br />
-            <textarea class="contact-us-message form-control" id="FormControlTextarea1" rows="3" placeholder="Message" value={message} onChange={(e)=>setMessage(e.target.value)} required/>
+            <textarea class="contact-us-message form-control" id="FormControlTextarea1" rows="3" placeholder="Your Message" value={message} onChange={(e)=>setMessage(e.target.value)} required/>
             <br />
             <button className="contact-us-button float-right"><span style={{display : disp3}}>Submit</span><center className="pb-1" style={{display : disp4}}><Spinner animation="border" variant="light" size="sm" /></center></button>
             <br />
@@ -282,19 +272,19 @@ function FreeResources() {
       </Modal>
       <Modal show={show1} centered onHide={handleClose1}>
         <Modal.Header closeButton>
-           Please enter your Email Address
+           Please enter your Email Id to get this free resource :
         </Modal.Header>
         <Modal.Body>
             <form onSubmit={requestResource}>
             <div className="row container-fluid">
                 
-                <div className="col-lg-8 col-6">
+                <div className="col-lg-8 col-12">
                     <br />
                     <input type="email" class="contact-us-input form-control" id="email2" placeholder="Email" required style={{width : "100%"}} onChange={(e)=>setFEmail(e.target.value)}/>
-                    <br />
+                    <br className="d-lg-block d-none"/>
                 </div>
-                <div className="col-lg-4 col-6">
-                    <br />
+                <div className="col-lg-4 col-12 text-lg-center text-right mt-lg-0 mt-3">
+                    <br className="d-lg-block d-none"/>
                     <button type="submit" className="contact-us-button mt-1"><span style={{display : disp1}}>Submit</span><center className="pb-1" style={{display : disp2}}><Spinner animation="border" variant="light" size="sm" /></center></button>
                 </div>
                 

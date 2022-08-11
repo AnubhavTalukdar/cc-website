@@ -122,7 +122,7 @@ function Footer(){
    
                 </div>
                 </div>
-                <div className="row container-fluid pl-5 pt-2">
+                <div className="row container-fluid pl-5 pt-3">
                     <div className="col-12">
                         <p className="footer-copyright">{message}</p>
                     </div>
