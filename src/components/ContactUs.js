@@ -11,6 +11,7 @@ import { BASE_URL } from "../config/url";
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
 import axios from "axios"
+import Tooltip from '@material-ui/core/Tooltip';
 
 function ContactUs(){
     const [name, setName] = useState("")
@@ -48,18 +49,8 @@ function ContactUs(){
             
         })
         // eslint-disable-next-line
-        window.Email.send({
-            Host : "smtp.gmail.com",
-            Username : "teamconsciousculture@gmail.com",
-            Password : "hzjgcxhozgcbvrai",
-            To : 'contact@consciousculture.in',
-            From : 'teamconsciousculture@gmail.com',
-            Subject : name+' tried contacting Conscious Culture',
-            // eslint-disable-next-line
-            Body : 'Name : ' + name + '<br >' + 'Phone : '+ number + '<br >' + 'Email : ' + cEmail + '<br >' + 'Company : ' + company + '<br >' + 'Message : <br>' + message
-        })
-        .then(
-          response => {
+        axios.post('http://localhost:8000/email_contact_us', {name: name, phone: number, company: company, email: cEmail, message: message})
+        .then(response => {
             setName("")
             setNumber("")
             setCompany("")
@@ -68,8 +59,7 @@ function ContactUs(){
             handleShow()
             setDisp1("block")
             setDisp2("none")
-          }
-        );
+        }) 
     }
 
     useEffect(() => { 
@@ -113,11 +103,11 @@ function ContactUs(){
                 <br />
                 <input type="email" className="contact-us-input form-control" id="email" placeholder="Email" value={cEmail} onChange={(e)=>setCEmail(e.target.value)} required/>
                 <br />
-                <input type="text" className="contact-us-input form-control" id="company" placeholder="Company" value={company} onChange={(e)=>setCompany(e.target.value)}/>
+                <input type="text" className="contact-us-input form-control" id="company" placeholder="Company Name" value={company} onChange={(e)=>setCompany(e.target.value)}/>
                 <br />
-                <input type="number" className="contact-us-input form-control" id="contact" placeholder="Contact" value={number} onChange={(e)=>setNumber(e.target.value)} required/>
+                <input type="number" className="contact-us-input form-control" id="contact" placeholder="Phone Number" value={number} onChange={(e)=>setNumber(e.target.value)} required/>
                 <br />
-                <textarea className="contact-us-message form-control" id="FormControlTextarea1" rows="8" placeholder="Message" value={message} onChange={(e)=>setMessage(e.target.value)} required/>
+                <textarea className="contact-us-message form-control" id="FormControlTextarea1" rows="8" placeholder="Your Message" value={message} onChange={(e)=>setMessage(e.target.value)} required/>
                 <br />
                 <button type="submit" className="contact-us-button float-right"><span style={{display : disp1}}>Submit</span><center className="pb-1" style={{display : disp2}}><Spinner animation="border" variant="light" size="sm" /></center></button>
                 <br />
@@ -131,38 +121,50 @@ function ContactUs(){
                 <a href={"mailto:"+email} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><p className="contact-us-text2">{email}</p></a>
                 <p className="contact-us-text3 mt-lg-5 mb-lg-5 mt-2 mb-2">{address1} <br />{address2}<br />{cp}</p>
                 <a  href={"tel:"+phone} target="_blank" rel="noopener noreferrer" style={{textDecoration : "none", textUnderline : "none", color : "inherit"}}><p className="contact-us-text4 mb-lg-5 mb-2">{phone}</p></a>
-                <p className="contact-us-text2 mt-lg-0 mt-md-0 mt-3">Our FAQ Section</p>
+                <p className="contact-us-text2 mt-lg-0 mt-md-0 mt-3">Follow us on Social Media</p>
                 <p>
                 <div className="row container-fluid pl-0">
                 <div className="col-1">
-                    <a href={facebook} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" /> 
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Facebook</b> page</span></React.Fragment>} arrow>
+                        <a href={facebook} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-facebook" src={FacebookIcon} alt="facebook-icon" /> 
+                        </a>
+                    </Tooltip>
                 </div>
                 <div className="col-1">
-                    <a href={twitter} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-twitter" src={TwitterIcon} alt="twitter-icon"  /> 
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Twitter</b> page</span></React.Fragment>} arrow>
+                        <a href={twitter} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-twitter" src={TwitterIcon} alt="twitter-icon"  /> 
+                        </a>
+                    </Tooltip>
                 </div>
                 <div className="col-1">
-                    <a href={instagram} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-instagram" src={InstagramIcon} alt="instagram-icon" />
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Instagram</b> page</span></React.Fragment>} arrow>
+                        <a href={instagram} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-instagram" src={InstagramIcon} alt="instagram-icon" />
+                        </a>
+                    </Tooltip>  
                 </div>
                 <div className="col-1">
-                    <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-instagram" src={LinkedinIcon} alt="linkedin-icon" />
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>LinkedIn</b> page</span></React.Fragment>} arrow>
+                        <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-instagram" src={LinkedinIcon} alt="linkedin-icon" />
+                        </a>
+                    </Tooltip>  
                 </div>
                 <div className="col-1">
-                    <a href={spotify} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-instagram" src={SpotifyIcon} alt="spotify-icon" />
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Spotify</b> page</span></React.Fragment>} arrow>
+                        <a href={spotify} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-instagram" src={SpotifyIcon} alt="spotify-icon" />
+                        </a>
+                    </Tooltip>  
                 </div>
                 <div className="col-1">
-                    <a href={youtube} target="_blank" rel="noopener noreferrer">
-                        <img className="social-icons-instagram" src={YoutubeIcon} alt="youtube-icon" />
-                    </a>
+                    <Tooltip sx={{backgroundColor: "black"}} title={<React.Fragment><span style={{fontSize: "14px"}}>Visit our <b>Youtube</b> page</span></React.Fragment>} arrow>
+                        <a href={youtube} target="_blank" rel="noopener noreferrer">
+                            <img className="social-icons-instagram" src={YoutubeIcon} alt="youtube-icon" />
+                        </a>
+                    </Tooltip>  
                 </div>
                 </div>
                 </p>
