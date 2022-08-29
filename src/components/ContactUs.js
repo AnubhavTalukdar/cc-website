@@ -49,7 +49,7 @@ function ContactUs(){
             
         })
         // eslint-disable-next-line
-        axios.post('http://localhost:8000/email_contact_us', {name: name, phone: number, company: company, email: cEmail, message: message})
+        axios.post('https://consciousculture.in/email_contact_us', {name: name, phone: number, company: company, email: cEmail, message: message})
         .then(response => {
             setName("")
             setNumber("")

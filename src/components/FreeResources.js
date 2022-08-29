@@ -81,7 +81,7 @@ function FreeResources() {
         setDisp1("none")
         setDisp2("block")
        
-        axios.post('http://localhost:8000/email_resource', {resourceLink: resourceLink, resourceHeading: resourceHeading, email: fEmail})
+        axios.post('https://consciousculture.in/email_resource', {resourceLink: resourceLink, resourceHeading: resourceHeading, email: fEmail})
         .then(response => {
             setShow1(false);
               setShow2(true)
