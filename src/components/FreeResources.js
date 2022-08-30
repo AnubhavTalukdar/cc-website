@@ -87,7 +87,6 @@ function FreeResources() {
               setShow2(true)
               setDisp1("block")
               setDisp2("none")
-              console.log(response)
         })
     }
 
@@ -280,12 +279,12 @@ function FreeResources() {
             <div className="row container-fluid">
                 
                 <div className="col-lg-8 col-12">
-                    <br />
+                    
                     <input type="email" class="contact-us-input form-control" id="email2" placeholder="Email" required style={{width : "100%"}} onChange={(e)=>setFEmail(e.target.value)}/>
-                    <br className="d-lg-block d-none"/>
+                    
                 </div>
-                <div className="col-lg-4 col-12 text-lg-center text-right mt-lg-0 mt-3">
-                    <br className="d-lg-block d-none"/>
+                <div className="col-lg-4 col-12 text-lg-center text-right mt-lg-0 mt-3 d-lg-flex d-block align-items-center justify-content-center">
+                    {/* <br className="d-lg-block d-none"/> */}
                     <button type="submit" className="contact-us-button mt-1"><span style={{display : disp1}}>Submit</span><center className="pb-1" style={{display : disp2}}><Spinner animation="border" variant="light" size="sm" /></center></button>
                 </div>
                 
