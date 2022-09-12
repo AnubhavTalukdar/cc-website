@@ -1,5 +1,3 @@
-
-
 /*Header*/
 
 .header {
@@ -273,7 +271,7 @@ a:hover {
 /*Contact Us*/
 
 .contact-us-text1 {
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     font-size: 28px;
     font-weight: normal;
     font-stretch: normal;
@@ -297,7 +295,7 @@ a:hover {
 }
 
 .contact-us-text3 {
-    font-family: ProximaNova;
+    /* font-family: ProximaNova; */
     font-size: 20px;
     font-weight: normal;
     font-stretch: normal;
@@ -309,7 +307,7 @@ a:hover {
 }
 
 .contact-us-text4 {
-    font-family: ProximaNova;
+    /* font-family: ProximaNova; */
     font-size: 20px;
     font-weight: normal;
     font-stretch: normal;
@@ -380,7 +378,7 @@ a:hover {
 }
 
 .faq-section2-text {
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     font-size: 30px;
     font-weight: normal;
     font-stretch: normal;
@@ -391,7 +389,7 @@ a:hover {
 }
 
 .faq-section2-lasttext {
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -403,7 +401,7 @@ a:hover {
 }
 
 .accordion-question {
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     font-size: 20px;
     font-weight: normal;
     font-stretch: normal;
@@ -432,7 +430,7 @@ a:hover {
         font-size: 24px;
     }
     .accordion-question {
-        font-family: OpenSans;
+        /* font-family: OpenSans; */
         font-size: 15px;
         font-weight: normal;
         font-stretch: normal;
@@ -1706,7 +1704,7 @@ option {
 /*Free Resources*/
 
 .freeresources-text1 {
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     font-size: 28px;
     font-weight: normal;
     font-stretch: normal;
@@ -1797,7 +1795,7 @@ option {
 }
 
 .about-section2-text {
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     font-size: 22px;
     font-weight: normal;
     font-stretch: normal;
@@ -1817,7 +1815,7 @@ option {
 }
 
 .about-section3-text {
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     color: #707070;
 }
 
@@ -2033,7 +2031,7 @@ option {
 /*Products & Services*/
 
 .products-text1 {
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     font-size: 22px;
     font-weight: normal;
     font-stretch: normal;
@@ -2065,7 +2063,7 @@ option {
 }
 
 .products-section2-text1{
-    font-family: OpenSans;
+    /* font-family: OpenSans; */
     font-size: 18px;
     font-weight: normal;
     font-stretch: normal;
