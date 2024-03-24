@@ -1,4 +1,5 @@
 {
+  "homepage": "https://anubhavtalukdar.github.io/cc-website",
   "name": "cc-website",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +13,7 @@
     "array-sort": "^1.0.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "gh-pages": "^6.1.1",
     "js-cookie": "^3.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
@@ -29,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
